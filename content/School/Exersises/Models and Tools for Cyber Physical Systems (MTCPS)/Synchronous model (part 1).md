@@ -54,3 +54,21 @@ Same for the bottom right and bottom middle. If you get a "0" you can either kee
 ## task 4
 ![[Pasted image 20250407175113.png]]
 
+
+```python
+if req1 == true:
+	if req2 == true:
+		b = choose(1,2)
+		if b == 1:
+			grant1
+		else:
+			grant2
+	else:
+		return grant1
+else if req2 == true:
+	return grant2
+```
+
+
+
+
