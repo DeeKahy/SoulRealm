@@ -39,4 +39,35 @@ start(bool x = 0) -.-> O
 O(0) -->|out:= 0; x:=in| I(1)
 I -->|out:=x; x:=in| O
 ```
-Valid uppaal file located at [here](pat1l1.xml)
+Valid uppaal file located  [here](pat1l1.xml) play with it to figure things out
+
+## task 3
+![[Pasted image 20250407151257.png]]
+
+
+```mermaid
+stateDiagram
+direction LR
+
+
+start(bool x = 0) -.-> 0
+0 --"1/0"--> 1
+0 --"0/0"--> 0
+0 --"0/1"--> 0
+1 --"0/1"--> 0
+
+
+```
+
+
+
+```mermaid
+stateDiagram-v2
+  direction LR
+  [*] --> 0
+  0 --> 0 : a
+  0 --> 1 : a
+  0 --> 0 : b
+  1 --> 2 : b
+  2 --> (3) : b
+```
