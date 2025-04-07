@@ -58,7 +58,7 @@ Trans(⟨l₆, V, M⟩, (l₆, assume(z > 40), l₈)) =
 
 
 
-
+lll
 
 
 
