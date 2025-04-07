@@ -39,5 +39,4 @@ start(bool x = 0) -.-> O
 O(0) -->|out:= 0; x:=in| I(1)
 I -->|out:=x; x:=in| O
 ```
-What exactly happens here?
-
+Valid uppaal file located at [here](pat1l1.xml)
