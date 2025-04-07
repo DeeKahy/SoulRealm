@@ -51,3 +51,6 @@ If you look at the **bottom left arrow** and the **top middle arrow** you can se
 
 Same for the bottom right and bottom middle. If you get a "0" you can either keep x at 1, or change it to a 0.
 
+## task 4
+![[Pasted image 20250407175113.png]]
+
