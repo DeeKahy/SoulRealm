@@ -43,31 +43,11 @@ Valid uppaal file located  [here](pat1l1.xml) play with it to figure things out
 
 ## task 3
 ![[Pasted image 20250407151257.png]]
+So what they are asking us to do is make a new machine thingy called a mealy machine.
+Its stupid and looks like this, Where the LEFT = 0, and the RIGHT = 1
+![[Pasted image 20250407174423.png]]
 
+If you look at the **bottom left arrow** and the **top middle arrow** you can see that if you get a "1" you can either replace x value with 1 which moves us to the right, or you can keep the old x value 0 and stay at 0.
 
-```mermaid
-stateDiagram
-direction LR
+Same for the bottom right and bottom middle. If you get a "0" you can either keep x at 1, or change it to a 0.
 
-
-start(bool x = 0) -.-> 0
-0 --"1/0"--> 1
-0 --"0/0"--> 0
-0 --"0/1"--> 0
-1 --"0/1"--> 0
-
-
-```
-
-
-
-```mermaid
-stateDiagram-v2
-  direction LR
-  [*] --> 0
-  0 --> 0 : a
-  0 --> 1 : a
-  0 --> 0 : b
-  1 --> 2 : b
-  2 --> (3) : b
-```
