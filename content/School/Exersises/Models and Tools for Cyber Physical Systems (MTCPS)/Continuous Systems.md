@@ -1,3 +1,4 @@
+#Exercises 
 a)
 ![[Pasted image 20250407095907.png]]
 

@@ -1,4 +1,4 @@
-
+#Exercises 
 ![[Pasted image 20250407143139.png]]
 √
 
