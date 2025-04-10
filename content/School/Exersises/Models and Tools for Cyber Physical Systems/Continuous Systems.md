@@ -70,7 +70,7 @@ def f(x, t):
     return t  # The function dx/dt = t
 
 # Example call
-t, x = euler_method(f, [0,1,3,6], 0, 1, 5)
+t, x = euler_method(f, [1], 0, 1, 5)
 
 ```
 
