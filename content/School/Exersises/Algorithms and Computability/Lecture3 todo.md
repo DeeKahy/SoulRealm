@@ -4,4 +4,15 @@
 - Solve CLRS4 29.2-5. (CLRS3 29.2-6).  Formulate a _binary linear program_ (decision variables are required to be either 0 or 1).
 
 
+1)
+![[Pasted image 20250428104202.png]]
+
+2)
+![[Pasted image 20250428104449.png]]
+
+![[Pasted image 20250428104324.png]]
+
+![[Pasted image 20250428104402.png]]
+
+
 
