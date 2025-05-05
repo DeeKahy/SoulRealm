@@ -7,6 +7,8 @@
 1)
 ![[Pasted image 20250428104202.png]]
 
+
+
 2)
 ![[Pasted image 20250428104449.png]]
 

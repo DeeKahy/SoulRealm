@@ -25,10 +25,13 @@ well this is 8 itterations, but just ditch the one.
 
 3)
 ![[Pasted image 20250428094125.png]]
+![[Pasted image 20250430130608.png]]
 
 4)
 
 ![[Pasted image 20250428094343.png]]
+
+
 
 5)
 ![[Pasted image 20250428094712.png]]
