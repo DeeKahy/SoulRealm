@@ -7,12 +7,19 @@
 1)
 ![[Pasted image 20250428104202.png]]
 
+![[Pasted image 20250505201018.png]]
 
+so the last step is just where we realize that we are being stinky poopie heads and can do it more efficiently by ditching the a-d line in favor of the top path, and then in the same picture (the last one) he fills up the bottom path as well. so its essentially 2 steps in 1.
 
+![[Pasted image 20250505201306.png]]
 2)
+
 ![[Pasted image 20250428104449.png]]
 
 ![[Pasted image 20250428104324.png]]
+
+
+
 
 ![[Pasted image 20250428104402.png]]
 
