@@ -247,3 +247,17 @@ Lecture 3
 • Notes on how to design a (taint-like) analysis
 • Notes on how to solve flow equations (even recursive ones)
 • Notes on the work list algorithm==
+
+
+# Lecture 7 and 8 ask teacher
+
+Model checking
+* Explicit State Methods
+* Abstract Interpretation
+![[Pasted image 20250510142307.png]]![[Pasted image 20250510142323.png]]
+
+
+ask teacher about this one. surely there is a mistake.
+![[Pasted image 20250510145151.png]]
+
+
