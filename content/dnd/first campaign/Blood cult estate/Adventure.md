@@ -18,7 +18,7 @@
 Read to players:
 > *"You all wake up on soft grass. Everyone has a throbbing headache and no memory of how you got here. Looking around, you see tall green hedges forming what appears to be a maze. The air is pleasantly warm, and birds chirp somewhere in the distance. Introduce yourselves to each other."*
 
-**DM Notes:** 
+**DM Notes:**  (encourrage them to be sisters)
 - Give players time to introduce their characters
 - If they ask what they have with them: Each has basic clothing and perhaps a simple weapon (dagger, staff) but no supplies
 - When ready to proceed: *"As you orient yourselves, you notice narrow pathways stretching in multiple directions. The hedge walls tower above you at 8 feet tall. Which way do you wish to explore?"*
@@ -59,16 +59,7 @@ The [[Hamster King Boss Encounter]] can be found here.
 > *"The entrance hall features a dusty chandelier, a grand staircase, and doorways leading to various rooms. The air is stale but not unpleasant, suggesting the mansion has been abandoned for some time."*
 
 ### Cannibal Encounter 
-> *"As you approach a door, you hear voices from the other side. Two people appear to be having a casual conversation, though their words are muffled. You catch fragments like '...quite tender...' and '...maybe an elf?...'"*
 
-**Cannibal Stats:**
-- **AC:** 12
-- **HP:** 10 each
-- **Attacks:** Knife (+2 to hit, 1d4+1 damage)
-
-**Options:**
-- **If players fight:** Standard combat with two weak opponents
-- **If players talk:** The cannibals are surprisingly cordial but make disturbing comments about "having the players for dinner." They reveal they work for "The Master" who maintains this place
 
 ## Part 6: Exploration and Supplies
 

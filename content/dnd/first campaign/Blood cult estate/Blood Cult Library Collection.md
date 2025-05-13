@@ -4,6 +4,8 @@
 - **"Breeding for Potency: Selective Hamster Bloodlines"**
 - **"From Squeaks to Strength: Transmuting Rodent Essence"**
 
+**random info about hamsters** [[The Bloodcaster Hamsters]]
+
 ## Cannibalistic Cookbooks
 - **"99 Ways of Cooking a Human: From Head to Toe"** (well-worn with several bookmarks)
 - **"The Thinking Meal: Gourmet Preparations of Sentient Beings"**

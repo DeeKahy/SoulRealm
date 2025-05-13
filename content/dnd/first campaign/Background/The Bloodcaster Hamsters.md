@@ -1,0 +1,9 @@
+The **Bloodcaster Hamsters** are not natural creatures but the result of extensive magical breeding by the Blood Cult. For generations, cultists selectively bred hamsters for increasingly potent magical properties in their blood, seeking to create a renewable source of healing elixirs without needing human sacrifices.
+
+After decades of arcane infusion and selective breeding, the hamsters developed unusual red-tinged fur and glowing eyes. Their blood, when properly extracted and processed, creates a powerful healing paste that accelerates wound closure and fights infection. However, this evolution came with unexpected consequences.
+
+The magical saturation awakened a primitive intelligence in the creatures. While far from sapient, they developed complex social structures centered around **dominance hierarchies**. Each group follows the strongest member, who establishes authority through combat displays and aggressive behaviors. When two hamster groups meet, their leaders battle for supremacy, with the loser's group becoming subservient to the victor's while maintaining their internal hierarchy.
+
+Their intelligence remains primarily instinctual. Bloodcaster Hamsters can recognize threats, coordinate simple defensive maneuvers, and even use rudimentary tools like sharp twigs or stones. However, they lack language beyond squeaks and body postures, and their planning rarely extends beyond immediate needs.
+
+Most concerning to handlers is their heightened aggression. The same magical properties that make their blood valuable also create a near-constant state of agitation. When escaped from captivity, they quickly establish territories and can become dangerously hostile to creatures entering their domain—a trait the Blood Cult discovered too late when several colonies escaped into the mansion grounds.

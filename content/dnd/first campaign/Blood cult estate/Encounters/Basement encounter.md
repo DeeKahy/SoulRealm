@@ -7,7 +7,9 @@ Here the players encounter Landemere Vane Who is part of the blood cult and whos
 
 ## Combat Stats
 
-### The Master (Stage 1)
+
+
+### The Master (Stage 1) + 3
 - **AC:** 12
 - **HP:** 18
 - **Speed:** 30 ft.
@@ -17,6 +19,13 @@ Here the players encounter Landemere Vane Who is part of the blood cult and whos
   - **Ray of Frost:** +4 to hit, 1d8 cold damage and reduces target's speed by 10 ft.
   - **Shocking Grasp:** +4 to hit, 1d8 lightning damage, target can't take reactions
 - **Dagger:** +2 to hit, 1d4 damage (desperate melee attack)
+
+
+**Cannibal Stats: * 3**
+- **AC:** 10
+- **HP:** 5
+- **Attacks:** Knife (+2 to hit, 1d4+1 damage)
+
 
 ### Arcane Snake (Stage 2)
 - **AC:** 13
@@ -58,4 +67,7 @@ Here the players encounter Landemere Vane Who is part of the blood cult and whos
 
 ## Experience Points
 Award 100 XP to the party for completing this challenging encounter.
+
+
+[[Laboratory Notes (Basement Encounter Additional Content)]]
 
