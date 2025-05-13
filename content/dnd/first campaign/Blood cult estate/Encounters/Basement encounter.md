@@ -1,4 +1,4 @@
-Here the players encounter Landemere Vane Who is part of the blood cult and whos mother is the "maser"
+Here the players encounter Landemere Vane Who is part of the blood cult and whos mother is the "master"
 
 ## Setting the Scene
 > *"As you descend into the basement, the temperature drops noticeably. Magical lights flicker along the stone walls, illuminating a circular chamber filled with arcane equipment. In the center stands a disheveled man in tattered robes, frantically scribbling notes at a desk covered in scrolls. He looks up suddenly, his eyes widening in shock and anger."*

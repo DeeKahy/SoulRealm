@@ -34,7 +34,7 @@ Read to players:
 6. **Hamster tracks** leading in a specific direction (toward the Hamster King)
 
 ### Maze Navigation
-- The maze has **12 intersections** before finding the Hamster King encounter. If they do they can leave or fight.
+- The maze has **6 intersections** before finding the Hamster King encounter. If they do they can leave or fight.
 - If they leave they go straight to the mansion
 
 ## Part 3: Hamster King Encounter
