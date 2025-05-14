@@ -1,5 +1,41 @@
 
+```encounter
+name: Hamster Throne Room Battle
+creatures:
+  - Hamster King
+  - 5: Hamster Minion
+```
+
+This encounter will automatically pull all the stats (HP, AC, etc.) from your custom statblocks. If you want to override specific stats for individual creatures, you can still do so:
+
+
+The system will recognize your custom statblocks as long as you've created them in your vault and the names match exactly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Combat Stats
+
+
+
+
+
+
 
 ### Hamster King
 - **AC:** 12

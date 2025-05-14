@@ -1,9 +1,12 @@
 > *"As you approach a door, you hear voices from the other side. Two people appear to be having a casual conversation, though their words are muffled. You catch fragments like '...quite tender...' and '...maybe an elf?...'"*
 
-**Cannibal Stats:**
-- **AC:** 12
-- **HP:** 10
-- **Attacks:** Knife (+2 to hit, 1d4+1 damage)
+```encounter
+name: Mannor canibals
+creatures:
+  - "3": Blood Cultist
+
+```
+
 
 **Options:**
 - **If players fight:** Standard combat with two weak opponents

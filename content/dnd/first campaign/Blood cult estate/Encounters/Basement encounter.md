@@ -5,36 +5,20 @@ Here the players encounter Landemere Vane Who is part of the blood cult and whos
 >
 > *"YOU!" he shrieks, pointing a trembling finger. "You're the ones who interfered with my teleportation matrix! My calculations were perfect until YOUR magical signatures appeared from nowhere! Do you have ANY idea what you've cost me?!"*
 
-## Combat Stats
 
+```encounter
+name: Landemere's Laboratory
+creatures:
+  - 3: Blood Cultist
+  - Landemere Vane
+```
 
+```encounter
+name: Arcane Snake Emergence
+creatures:
+  - Arcane Snake
+```
 
-### The Master (Stage 1) + 3
-- **AC:** 12
-- **HP:** 18
-- **Speed:** 30 ft.
-- **Spells:**
-  - **Magic Missile:** Automatically hits for 1d4+1 damage (can target multiple players)
-  - **Shield:** Reaction when hit, +5 AC until next turn (can use once)
-  - **Ray of Frost:** +4 to hit, 1d8 cold damage and reduces target's speed by 10 ft.
-  - **Shocking Grasp:** +4 to hit, 1d8 lightning damage, target can't take reactions
-- **Dagger:** +2 to hit, 1d4 damage (desperate melee attack)
-
-
-**Cannibal Stats: * 3**
-- **AC:** 10
-- **HP:** 5
-- **Attacks:** Knife (+2 to hit, 1d4+1 damage)
-
-
-### Arcane Snake (Stage 2)
-- **AC:** 13
-- **HP:** 12
-- **Speed:** 30 ft., climb 30 ft.
-- **Attacks:**
-  - **Bite:** +4 to hit, 1d4 piercing damage plus 1d4 poison damage
-  - **Arcane Surge:** Once per combat, emits a pulse of magic (DC 10 Dexterity save or take 2d4 force damage)
-- **Magic Resistance:** Advantage on saving throws against spells
 
 ## Tactics
 - **Master:** Stays at range, uses Magic Missile first, then Ray of Frost on the strongest-looking character
@@ -65,7 +49,7 @@ Here the players encounter Landemere Vane Who is part of the blood cult and whos
   4. Prestidigitation (small magical trick)
 - **Bonus:** The Master's research notes, which explain that his teleportation spell accidentally pulled the players from their world. The notes hint at a way to return home (hook for future adventures)
 
-## Experience Points
+## Experience Points LEVEL UP
 Award 100 XP to the party for completing this challenging encounter.
 
 

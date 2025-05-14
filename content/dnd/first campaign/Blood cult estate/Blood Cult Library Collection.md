@@ -1,10 +1,7 @@
-
-## Hamster Blood Tomes
+## [[The Bloodcaster Hamsters]] (ask for it)
 - **"Hamster Hemoglobin: The Overlooked Elixir"** (with disturbing hand-drawn illustrations)
 - **"Breeding for Potency: Selective Hamster Bloodlines"**
 - **"From Squeaks to Strength: Transmuting Rodent Essence"**
-
-**random info about hamsters** [[The Bloodcaster Hamsters]]
 
 ## Cannibalistic Cookbooks
 - **"99 Ways of Cooking a Human: From Head to Toe"** (well-worn with several bookmarks)
@@ -18,7 +15,6 @@
 - **"Blood Sacrifices Through the Ages: A Comparative Study"**
 - **"The Rule of Three: Why Triplets Make Superior Offerings"**
 - **"Obscure Blood Facts That Will Surprise You"**
-- **"Fun Games for Cultist Gatherings: Building Morale Between Rituals"**
 - **"Did You Know? 101 Fascinating Facts About the Human Circulatory System"**
 
 ## Ritual & Reference Texts

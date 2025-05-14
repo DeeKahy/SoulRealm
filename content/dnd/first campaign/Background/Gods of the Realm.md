@@ -68,7 +68,7 @@ Once widely worshipped by all elven kind, Apito now maintains a smaller but ferv
 
 **Taboo**: Breaking the fabric of reality. (it is unknown if such a thing is even possible)
 
-**Worshippers**: Unknown
+**Worshippers**: Unknown (warlocks commonly make pacts with this being)
 
 ## Sinara, The Game Mistress
 **Domain**: Games, Leisure, Comfort, Love, Competition

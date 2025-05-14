@@ -25,13 +25,11 @@ Read to players:
 
 ## Part 2: Maze Exploration
 
-### Random Encounters (Roll 1d6 at each intersection)
+### Random Encounters (Roll 1d4 at each intersection)
 1. **[[Surprise Hamster Attack]]** - Use the Maze Hamster stats provided
 2. **Strange Scratching Sounds** from within the hedge (nothing happens, just building tension)
 3. **Small pile of seeds** and nuts (harmless, can be collected)
-4. **Torn piece of clothing** caught on a branch (hint of previous visitors)
-5. **Dead end** with scratched markings on the ground
-6. **Hamster tracks** leading in a specific direction (toward the Hamster King)
+4. **Hamster tracks** leading in a specific direction (toward the Hamster King)
 
 ### Maze Navigation
 - The maze has **6 intersections** before finding the Hamster King encounter. If they do they can leave or fight.
@@ -58,8 +56,12 @@ The [[Hamster King Boss Encounter]] can be found here.
 ### Entrance Hall
 > *"The entrance hall features a dusty chandelier, a grand staircase, and doorways leading to various rooms. The air is stale but not unpleasant, suggesting the mansion has been abandoned for some time."*
 
-### Cannibal Encounter 
 
+* [[Canibal encounter]]
+* [[Blood Cult Library Collection]]
+* [[The Bloodcult Manor Kitchen]]
+* [[Bedroom]]
+* 
 
 ## Part 6: Exploration and Supplies
 
