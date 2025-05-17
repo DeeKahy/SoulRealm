@@ -52,3 +52,8 @@ Xerababadubuth selects warlocks who demonstrate potential for emotional manipula
 ## Roleplaying Notes
 Xerababadubuth communicates through dreams, whispers, and occasional manifestations. She speaks in a seductive tone that hints at her true nature. Her demands often escalate over time, testing the warlock's devotion and willingness to compromise their morals. She reacts poorly to rejection or disobedience, potentially withdrawing powers or sending rivals to punish wayward servants.
 
+
+
+
+
+She is the brains behind the brothel called [[Siren's Embrace]].

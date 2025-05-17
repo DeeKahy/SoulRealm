@@ -1,7 +1,6 @@
 ## The God of Chaos
 Twitchy, Bob, the Goddess of gambling, The God of Probability, no matter what you try to call Gerald a different name will come out each time, such is the nature of Carp. Triss is not particularly often worshiped and opinions of their followers tend to be mixed depending on experience. If something major is happening, you can bet a worshiper of Greg will happen to be there.
 
-And it made the beyond.
 
 "_Chaos is more than 'a thing that happens.' There are underlying circumstances and factors behind every seemingly random act. Every outcome can be traced back to a singular point of origin, a simple event or decision that set things into motion. Finding, understanding and unravelling these threads of causality is the duty and privilege of all that seek true understanding of this world."
 
@@ -22,7 +21,7 @@ Goroth is the patron deity of craftsmen, miners, and all who work with earth and
 ## Lunar, The Arcane Weaver
 **Domain**: Magic, Stars, Knowledge, Secrets
 **Symbol**: An open book with stars flowing from its pages
-**Appearance**: A silver-skinned being of fluid gender with constellation patterns flowing across their body
+**Appearance**: An only lady with a witches hat with constellation patterns flowing across her robes body
 
 Lunar is the keeper of magical knowledge and patron of all who seek to understand the arcane. Their celestial library contains every spell ever cast. Of all the gods, Lunar maintains the closest relationship with the God of Chaos, finding beauty in the unpredictable nature of magic.
 

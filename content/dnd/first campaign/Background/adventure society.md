@@ -1,0 +1,1 @@
+Place where registred adventureres can pick up well paying jobs. Its generally a trustworthy place depending on the local politics. To become an official adventurere you need to go through a registration process and need to have a tracking badge on you at all times in case you die.

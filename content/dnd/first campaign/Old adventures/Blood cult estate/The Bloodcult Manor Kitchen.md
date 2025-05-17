@@ -1,4 +1,4 @@
-
+ n. 
 
 
 
@@ -22,4 +22,6 @@ Players searching the kitchen might discover:
 - **Ceremonial dining implements** with cult symbols engraved on the handles
 
 The air carries a **sickly-sweet smell** beneath layers of herbs and spices, and occasional **suspicious stains** mar the otherwise meticulously maintained space.
+
+
 
