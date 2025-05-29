@@ -23,6 +23,15 @@ so the last step is just where we realize that we are being stinky poopie heads 
 
 ![[Pasted image 20250428104402.png]]
 
+![[Pasted image 20250528093709.png]]
+
+hey look if our limits are high enough then it doesnt matter. So just set limits to whatever your flow is and then its equivilant.
+
+
+
+
+
+
 3)
 ![[Pasted image 20250428104559.png]]
 
