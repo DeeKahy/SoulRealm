@@ -7,7 +7,7 @@ Here the players encounter Landemere Vane Who is part of the blood cult and whos
 
 
 ```encounter
-name: Landemere's Laboratory
+name: Landemere's Laborator
 creatures:
   - 3: Blood Cultist
   - Landemere Vane
@@ -54,4 +54,8 @@ Award 100 XP to the party for completing this challenging encounter.
 
 
 [[Laboratory Notes (Basement Encounter Additional Content)]]
+
+
+
+
 

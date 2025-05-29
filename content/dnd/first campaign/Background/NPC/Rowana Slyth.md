@@ -5,7 +5,6 @@ players can find her in her shop selling supplies, or maybe in the adventure/mer
 
 
 
-
 - Name: Rowana Slyth
 - statblock / role: Alchemist Traveling and Selling Supplies with her girlfriend.
 - Apperance: Elf with dark hair, blue eyes, and slender frame.

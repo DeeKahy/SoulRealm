@@ -61,7 +61,6 @@ The [[Hamster King Boss Encounter]] can be found here.
 * [[Blood Cult Library Collection]]
 * [[The Bloodcult Manor Kitchen]]
 * [[Bedroom]]
-* 
 
 ## Part 6: Exploration and Supplies
 
@@ -104,4 +103,6 @@ Players can:
 - **Hamster King:** AC 12, HP 8, Scepter +2 (1d4 damage)
 - **Hamster Minions:** AC 9, HP 2, Attack +1 (1d2 damage)
 - **Cannibals:** AC 12, HP 10, Knife +2 (1d4+1 damage)
+
+kj
 

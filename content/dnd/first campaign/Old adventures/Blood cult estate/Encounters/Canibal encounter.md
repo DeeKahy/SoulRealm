@@ -12,3 +12,6 @@ creatures:
 - **If players fight:** Standard combat with two weak opponents
 - **If players talk:** The cannibals are surprisingly cordial but make disturbing comments about "having the players for dinner." They reveal they work for "The Master" who maintains this place
 - When One cultist dies another one will come as backup.
+
+
+
