@@ -29,6 +29,19 @@ So essentially when you find a non x, delete it, find an x, delete that, and rep
 
 
 ![[Pasted image 20250529115737.png]]
+We assume that AP is not computable. So if its compliment would be computably-enumerable, that would make AP itself computable, which is obviously not correct.
+
+
+
+![[Pasted image 20250530094336.png]]
+
+
+If you take the compliment of NEP then it will always accept on an empty and never on anything else.
+
+
+![[Pasted image 20250530095252.png]]
+![[Pasted image 20250530095344.png]]
+
 
 
 
