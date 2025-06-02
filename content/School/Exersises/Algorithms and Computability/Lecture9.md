@@ -3,7 +3,11 @@
 ![[Pasted image 20250527172057.png]]
 Given string hello, it will return hellohello since it repeats itself once and it can be any word. the b just means alphabet and the "*" is regex for any number of them.
 
+essentially have a function that finds the midpoint, and have states corresponiding to each symbol in the language. then check that the first letter and letter after midpoint match, and delete them. (if they dont match rejet). Then do that over again (youd need some logic to handle the empty in the middle) and just repeat until nothing is left or it rejects.
 
+
+
+![[Pasted image 20250602103715.png]]
 
 
 
