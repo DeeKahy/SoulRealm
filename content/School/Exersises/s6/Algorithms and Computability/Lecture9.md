@@ -40,8 +40,8 @@ If you have 2 turring machines its really easy. If the first one accepts it then
 
 
 
-![[Pasted image 20250527170514.png]]
 
+![[Pasted image 20250602112854.png]]
 
 
 

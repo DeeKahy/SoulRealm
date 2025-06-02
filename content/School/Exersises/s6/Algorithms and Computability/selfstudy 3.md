@@ -1,4 +1,4 @@
-y<![[Pasted image 20250410111911.png]]
+![[Pasted image 20250410111911.png]]
 1)
 No it is the other way around, because b has stuff a doesnt have, but a ONLY has things b already has.
 
@@ -13,12 +13,7 @@ True because if a doesnt work then b WILL not work because they share those exac
 ![[Pasted image 20250410112628.png]]
 Essentially the larger the language is the higher chance it has to be computable.
 
-HP <= somelang
-in this case somelang can be computable, and hp is obvioulsy halting problem.
-
-
-HP => somelang
-In this case somelang is NOT computable.
+[[Reduction Relationships and Computability]]
 
 
 
