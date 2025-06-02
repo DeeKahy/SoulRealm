@@ -34,4 +34,4 @@ HP = The HaltingProblem
 
 
 
-If still confused look at [[selfstudy 3]]
+If still confused look at [[selfstudy 3]] and [[Decidable?]]

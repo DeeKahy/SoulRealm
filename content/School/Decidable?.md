@@ -1,4 +1,4 @@
-### Key Concepts for Exam:
+### Key Concepts for Exam question:
 1. **Decidable**: A language has an algorithm that always halts and answers "yes" or "no".
 2. **Recognizable (RE)**: A language has an algorithm that halts on "yes" instances (may loop on "no").
 3. **$P$**: Problems solvable in polynomial time.
@@ -10,7 +10,6 @@
 np is hard if lprime is in np.
 
 ![[Pasted image 20250602133039.png]]
-
 
 ### Key Relationships:
 - **Reductions**:  
