@@ -30,5 +30,8 @@ HP = The HaltingProblem
 
 ![[Pasted image 20250410112603.png]]
 
+![[Pasted image 20250602133426.png]]
+
+
 
 If still confused look at [[selfstudy 3]]
