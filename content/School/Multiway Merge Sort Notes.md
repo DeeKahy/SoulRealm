@@ -1,5 +1,4 @@
 
-
 ## Question 8: Merge Pass Iterations
 
 ### Formula
@@ -102,8 +101,8 @@ def calculate_total_ios(total_pages, buffer_pages):
     return total_ios
 
 # Example usage
-N = 1000  # Total pages
-B = 10    # Buffer pages
+N = 576  # Total pages
+B = 9    # Buffer pages
 
 total_ios = calculate_total_ios(N, B)
 print(f"Total pages (N): {N}")
