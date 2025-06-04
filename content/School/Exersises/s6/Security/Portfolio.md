@@ -261,3 +261,50 @@ ask teacher about this one. surely there is a mistake.
 ![[Pasted image 20250510145151.png]]
 
 
+
+Why do we need formal methods?
+• What is a worklist algorithm?
+• Explicit State Reachability Checking
+• Abstract Interpretation
+•
+• The Uninitialised Variable Analysis
+• The sign analysis
+• Implementation details from the exercises
+
+
+
+Define EB8 for the operations not covered in class,
+• Extend Dsign (and transfer/evalutate functions) to include +0 and −0 values,
+• Consider you want to track a range of possbile values for each variable (to get
+more precision than Dsign).
+• How does your abstract domain look like?
+• How does your transfer functions look like
+• If you integrate this domain into the worklist algorithm, can you then still be certain
+of termination?
+63
+
+
+# Lecture 9 Fuzzing
+
+## Blackbox Fuzzing
+We only know that is crashes, put in random input and see what happens. If it doesnt crash then :thumbsup: if it crashes, then we know there is something we might want to handle.
+
+Its hard becasue we dont know much, so knowing what to test and how to test is pretty problamatic which is where greybox fuzzing comes in since A Little Knowledge Goes a Long Way.
+
+## Greybox Fuzzing
+it involves adding monitoring and measurement capabilities to software systems to gain insights and improve security. So if we know what part fails how it becomes a LOT easier to figure out what goes wrong and why. Fuzzing is great for detecting crashes and kinda garbage for Logic errors, which is why we try to get a little more information in greybox testing. 
+
+
+## Whitebox Fuzzing
+Whitebox fuzzing is pretty good for logic errors, but, REALLY tedious to make properly, and we all know the weakest link in the chain is the programmer.
+
+Has a HUGE investment to do properly.
+• Requires difficult to use tools
+• Requires full access to source code
+• Requires working build system/platform (for target)
+• Instrumentation may change properties (e.g., timing
+
+
+
+
+
