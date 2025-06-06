@@ -12,6 +12,8 @@
 ![[Pasted image 20250604170553.png]]
 
 
+
+
 ## Exercise 3
 ![[Pasted image 20250604170612.png]]
 

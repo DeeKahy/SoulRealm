@@ -1,5 +1,4 @@
 # What is security? / BSI 
-## Security Definition
 
 ### CIA Model for Security Goals (obviously not the end all be all)
 
@@ -49,10 +48,10 @@ Reflections on C’s “security” model
 (think microarchitecture attacks and “helpful” compilers)
 
 ## STRCPY:
-**`strcpy()` in C does not perform bounds checking** [1](https://www.geeksforgeeks.org/strcpy-in-c/)[2](https://www.geeksforgeeks.org/security-issues-in-c-language/). This means that it doesn't verify if the destination buffer is large enough to hold the source string, which can lead to a buffer overflow if the source string is larger than the destination buffer [1](https://www.geeksforgeeks.org/strcpy-in-c/)[2](https://www.geeksforgeeks.org/security-issues-in-c-language/).
+**`strcpy()` in C does not perform bounds checking**. This means that it doesn't verify if the destination buffer is large enough to hold the source string, which can lead to a buffer overflow if the source string is larger than the destination buffer.
 
 `strcpy_s` is considered safer than `strcpy` primarily because it helps prevent buffer overflows. Here's why:
-- **Buffer Overflow Protection**: `strcpy_s` requires you to explicitly specify the size of the destination buffer. This allows the function to avoid writing beyond the buffer's boundaries, preventing potential overflows [1](https://cplusplus.com/forum/beginner/118771/). `strcpy`does not perform this check, making it vulnerable to writing past the allocated memory if the source string is larger than the destination buffer [2](https://www.geeksforgeeks.org/why-strcpy-and-strncpy-are-not-safe-to-use/)[3](https://www.reddit.com/r/cprogramming/comments/kucrv6/why_is_strcpy_unsafe/).
+- **Buffer Overflow Protection**: `strcpy_s` requires you to explicitly specify the size of the destination buffer. This allows the function to avoid writing beyond the buffer's boundaries, preventing potential overflows. `strcpy`does not perform this check, making it vulnerable to writing past the allocated memory if the source string is larger than the destination buffer.
 
 **strcpy() violates the following security rules:**
 
@@ -61,9 +60,9 @@ Reflections on C’s “security” model
 - **CERT C STR31-C**: "Guarantee that storage for strings has sufficient space for character data and the null terminator"
 
 ## sprintf
-`sprintf` has potential for buffer overflows because of bad bound checking like in STRCPY above [1](https://stackoverflow.com/questions/7315936/which-of-sprintf-snprintf-is-more-secure)[2](https://softwareengineering.stackexchange.com/questions/418304/since-strcpy-strcat-and-sprintf-are-dangerous-what-shall-we-use-in-stea):
+`sprintf` has potential for buffer overflows because of bad bound checking like in STRCPY above.
 
-- **Buffer Overflow:** The main issue with `sprintf` is that it doesn't perform bounds checking. If the formatted string exceeds the buffer size, it can lead to a buffer overflow, potentially overwriting adjacent memory and causing crashes or security exploits [2](https://softwareengineering.stackexchange.com/questions/418304/since-strcpy-strcat-and-sprintf-are-dangerous-what-shall-we-use-in-stea).
+- **Buffer Overflow:** The main issue with `sprintf` is that it doesn't perform bounds checking. If the formatted string exceeds the buffer size, it can lead to a buffer overflow, potentially overwriting adjacent memory and causing crashes or security exploits.
 
 **sprintf() violates the following security rules:**
 
@@ -382,27 +381,155 @@ A **generic graph traversal algorithm** that systematically explores all states 
 
 
 # Secure information flow
-Indirect flows are scary because they can bybpass taint analysis
+
+## **Non-Interference Definition & Concept**
+
+### **Core Definition**
+**Non-interference** ensures that **high-security (H) inputs cannot affect low-security (L) outputs in any way**.
+
+![[Pasted image 20250606095824.png]]
+### **Formal Definition**
+Statement S is non-interfering if whenever:
+- ```⟨S,s₁⟩ → s'₁``` and ```⟨S,s₂⟩ → s'₂```
+- ```dom(s₁) = dom(s₂) = dom(Γ)```
+- ```s₁(x) = s₂(x)``` for all x where ```Γ(x) ≤ ℓ```
+
+Then: ```s'₁(x) = s'₂(x)``` for all x where ```Γ(x) ≤ ℓ```
+
+### **Key Properties**
+- **Very strong security guarantee** - prevents all information leakage
+- **May be too restrictive** for practical applications
+- **Captures the essence of confidentiality** - secret data cannot influence public outputs
+
+## **Confidentiality Attacks**
+
+### **Direct Flows**
+- **Definition**: Explicit assignment of high-security data to low-security variables
+- **Example**: ```x = input(HIGH); output(x);```
+- **Detection**: Easy to detect with basic taint analysis
+
+### **Indirect Flows (Implicit Flows)**
+- **Definition**: High-security data affects control flow, which influences low-security variables
+- **Example**: 
+```c
+  x = input(HIGH);
+  if (x) y = 0;
+  else y = 1;a
+  output(y);
+  ```
+- **Challenge**: Control flow dependency creates information leakage
+- **Detection**: Requires tracking program counter (pc) taint
+
+### **Side-Channels**
+- **Definition**: Information leakage through execution characteristics
+- **Examples**:
+  - **Timing channels**: Execution time reveals secret information
+  - **Memory access patterns**: Cache behavior exposes data
+  - **Resource consumption**: CPU/memory usage patterns
+- **Challenge**: Very difficult to prevent with static analysis alone
+
+## **Defining Confidentiality in Programs**
+
+### **Classifying Variables**
+- **Security Levels**: Variables assigned security classifications
+- **Common Levels**: 
+  - **H (High)**: Secret/confidential data
+  - **L (Low)**: Public data
+- **Environment**: ```Γ: Var → Level``` assigns security level to every variable
+
+### **Security Lattice**
+- **Structure**: ```SecLevel = ({H,L}, ⊑)``` where ```L ⊑ H```
+- **Ordering**: Low security ⊑ High security
+- **Join Operation**: ```L ⊔ H = H```, ```L ⊔ L = L```, ```H ⊔ H = H```
+- **Purpose**: Determines information flow direction and constraints
+## **Taint Analysis for Confidentiality**
+
+### **Basic Taint Analysis**
+- **Purpose**: Track flow of tainted (high-security) data
+- **Dataflow Problem**: ```SIF = Vars → SecLevel```
+- **Handles**: Direct flows effectively
+- **Limitation**: Cannot detect indirect flows
+
+### **Extended Taint Analysis**
+#### **Key Extensions Needed**
+1. **Program Counter (pc) Tracking**: Track taint of control flow
+2. **Conditional Handling**: 
+   ```
+   OUT(ℓ) = IN(ℓ) ⊔ [pc → classify(IN(ℓ),e)]
+   ```
+3. **Assignment Updates**:
+   ```
+   OUT(ℓ) = IN(ℓ)[x → IN(ℓ)(pc) ⊔ classify(IN(ℓ),e)]
+   ```
+
+#### **Why Extensions Are Needed**
+- **Direct flows**: Basic analysis sufficient
+- **Indirect flows**: Need pc tracking to capture control dependencies
+- **Label creep problem**: Security level only increases, impractical
+
+#### **CFG Extensions**
+- **Add endif nodes**: Allow pc taint to decrease after conditionals
+- **Restore pc level**: ```OUT(ℓ) = IN(ℓ)[pc → IN(ℓ')(pc)]```
+
+### **Limitations**
+- **Side-channels**: Cannot detect timing or resource-based leaks
+- **False positives**: May be overly conservative
+- **Label creep**: Security levels tend to increase monotonically
+
+## **Type Systems for Confidentiality**
+
+### **Core Concept**
+**Force programmers to write secure programs** using type system constraints
+
+### **Type Rules for Expressions**
 ```
-h = input ( HIGH );
-l = 17;
-while ( h > 0)
-	skip ;
-l = 0;
+Γ ⊢ n : ℓ                    (constants)
+Γ ⊢ x : Γ(x)                 (variables)
+Γ ⊢ e₁ : ℓ₁   Γ ⊢ e₂ : ℓ₂
+________________________      (binary operations)
+Γ ⊢ e₁ bop e₂ : ℓ₁ ⊔ ℓ₂
 ```
 
-* Definition and discussion of the concept of “non-interference”
-• Notes on confidentiality attacks
-	• Direct flows
-	• Indirect flows
-	• Side-channels
-• Notes on defining confidentiality in a program
-	• Classifying variables
-	• Security lattice
-• Notes on using taint analysis
-	• How to extend it and why (relate to attacks)
-• Notes on type systems for confidentiality
+### **Type Rules for Statements**
+```
+Γ,pc ⊢ skip                  (skip)
 
+Γ,pc ⊢ S₁   Γ,pc ⊢ S₂
+______________________        (sequence)
+Γ,pc ⊢ S₁; S₂
+
+Γ ⊢ e : ℓ   ℓ ⊔ pc ⊑ Γ(x)
+________________________      (assignment)
+Γ,pc ⊢ x = e
+
+Γ ⊢ e : ℓ   Γ,ℓ⊔pc ⊢ S₁   Γ,ℓ⊔pc ⊢ S₂
+________________________________________   (conditional)
+Γ,pc ⊢ if(e) S₁ else S₂
+
+Γ ⊢ e : ℓ   Γ,ℓ⊔pc ⊢ S
+_________________________     (while loop)
+Γ,pc ⊢ while(e) S
+```
+
+### **Security Properties**
+- **Simple Security**: Can only read up to security level ℓ
+- **Confinement**: Can only write down to security level ℓ
+- **Bell-LaPadula Style**: No read up / No write down (control f for more)
+
+### **Soundness**
+- **Enforces non-interference**: Well-typed programs satisfy non-interference
+- **Static guarantee**: Security verified at compile time
+- **Conservative**: May reject some safe programs (control f for more)
+
+### **Advantages**
+- **Proactive security**: Prevents insecure code from being written
+- **Static verification**: No runtime overhead
+- **Strong guarantees**: Mathematically proven security properties
+
+### **Limitations**
+- **Too restrictive**: Can reject legitimate secure programs
+- **No side-channel protection**: Cannot prevent timing attacks
+- **Requires programmer discipline**: Must properly classify all variables
 
 
 

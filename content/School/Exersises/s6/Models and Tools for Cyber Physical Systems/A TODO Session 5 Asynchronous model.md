@@ -12,7 +12,7 @@ There is a single queue as state variable with the declaration who's initializat
 
 Lets go through it from start to finish.
 
-You get a message in, that is then handeled by the input task Ai which stores the messages arriving on the input channel in the queue x when it isnt full: `AI: NOT FULL(x) -> Enqueue(in, x)`
+You get a message in, that is then handled by the input task Ai which stores the messages arriving on the input channel in the queue x when it isnt full: `AI: NOT FULL(x) -> Enqueue(in, x)`
 
 Then the output task is enabled since x is no longer empty. It takes x and removes it from the queue and then sends it to out1
 
