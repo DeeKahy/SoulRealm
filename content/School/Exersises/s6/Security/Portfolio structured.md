@@ -1,5 +1,4 @@
-# Lecture 1: What is Security?
-
+# What is security? / BSI 
 ## Security Definition
 
 ### CIA Model for Security Goals (obviously not the end all be all)
@@ -40,8 +39,7 @@ Most systems initially prioritize functionality over security:
 - Security considerations are frequently deferred, leading to vulnerabilities
 
 
-# Lecture 2
-
+# Secure C
 Reflections on C’s “security” model
 • How and where (in the process) should it have been found? **before the function was introduced.**
 • How can it be mitigated/solved? **adding a depricated warning**
@@ -62,7 +60,7 @@ Reflections on C’s “security” model
 - **CWE-676: Use of Potentially Dangerous Function** - strcpy is considered inherently dangerous
 - **CERT C STR31-C**: "Guarantee that storage for strings has sufficient space for character data and the null terminator"
 
-# sprintf
+## sprintf
 `sprintf` has potential for buffer overflows because of bad bound checking like in STRCPY above [1](https://stackoverflow.com/questions/7315936/which-of-sprintf-snprintf-is-more-secure)[2](https://softwareengineering.stackexchange.com/questions/418304/since-strcpy-strcat-and-sprintf-are-dangerous-what-shall-we-use-in-stea):
 
 - **Buffer Overflow:** The main issue with `sprintf` is that it doesn't perform bounds checking. If the formatted string exceeds the buffer size, it can lead to a buffer overflow, potentially overwriting adjacent memory and causing crashes or security exploits [2](https://softwareengineering.stackexchange.com/questions/418304/since-strcpy-strcat-and-sprintf-are-dangerous-what-shall-we-use-in-stea).
@@ -77,10 +75,64 @@ Reflections on C’s “security” model
 
 spectre/meltdown are very hard to avoid.
 
-# Lecture 3
 
-# Access Control and Security Models
+# Formal methods
 
+- Why do we need formal methods?
+- Explicit State Reachability Checking
+- Abstract Interpretation
+- The Uninitialised Variable Analysis
+- The sign analysis
+
+## Why do we need formal methods?
+
+**Formal methods are needed to find bugs in programs**.
+
+- **Game bugs demonstrate real-world problems** - from speedrunner-exploitable bugs to frustrating gameplay issues 
+- **Testing limitations** - We can't test all possible inputs, and traditional testing requires partitioning inputs into groups with similar behavior 
+- **Security implications** - An error may be an attack vector, making verification crucial in security contexts 
+- **Verification throughout development** - Formal methods can be applied at different stages from requirements to implementation 
+
+## Explicit State Reachability Checking
+
+**Explicit state reachability checking explores the complete state space** by executing programs with concrete values . Key characteristics include:
+
+- **Worklist algorithm** - Uses a systematic search through all reachable states starting from an initial state 
+- **State explosion problem** - The number of possible states grows exponentially (8-bit: 255 states, 32-bit: 4+ billion states) 
+- **Search strategies** - Can use breadth-first (queue), depth-first (stack), or random approaches 
+- **Completeness vs. scalability** - While theoretically complete, it may not terminate for large programs due to infinite state spaces 
+
+## Abstract Interpretation
+
+**Abstract interpretation executes programs with abstract values rather than concrete values** to achieve termination while maintaining soundness . The approach involves:
+
+- **Abstract domains** - Replace concrete values with abstract representations that capture relevant properties 
+- **Sound approximation** - Results are guaranteed to be correct (no false negatives) but may produce false positives because it can only check some code
+- **Termination guarantee** - By using finite abstract domains, the analysis is guaranteed to terminate 
+- **Trade-off principle** - "You can only have two" of soundness, completeness, and termination 
+
+### The Uninitialised Variable Analysis
+
+**The uninitialised variable analysis uses abstract interpretation with a simple two-element domain** :
+
+- **Abstract domain Di = {⊥, ⊤}** where ⊥ represents "uninitialised" and ⊤ represents "initialised" 
+- **Transfer functions** - Variable assignments set values to ⊤, while uninitialized variables remain ⊥ 
+- **Purpose** - Detects potential uses of uninitialised variables before they cause runtime errors 
+- **Memory handling** - Memory operations return ⊤ (assuming memory could contain any value) 
+
+### The Sign Analysis
+
+**The sign analysis tracks the sign of integer values using a lattice-based abstract domain** :
+
+- **Abstract domain Dsign = {+, -, 0, ⊤, ⊥}** with partial ordering where ⊥ is bottom and ⊤ is top 
+- **Arithmetic operations** - Abstract addition, multiplication, and comparison operations are defined with lookup tables 
+- **Example operations**:
+  - ```+ + + = +```, ```+ + - = ⊤```, ```+ + 0 = +``` 
+  - ```+ * + = +```, ```+ * - = -```, ```+ * 0 = 0``` 
+- **Applications** - Can detect division by zero, array bounds violations, and other sign-related errors 
+- **Precision vs. efficiency** - More abstract than explicit values but can be extended (e.g., distinguishing +0 and -0) for increased precision 
+
+# Access control models
 ## Access Control Matrix
 **An access control matrix is a formal security implementation for an access control model** that represents the permissions of subjects (users, processes) to perform operations on objects (files, resources) in a system. 
 
@@ -140,7 +192,7 @@ Confidential  S-A   S-B   TS-B
 - authenticate: User provides valid credentials
 - timeout/logout: Session expires or user logs out
 
-## Bell-LaPadula (BLP) Model
+## Bell-LaPadula (BLP) Model5
 
 **The Bell-LaPadula model is a formal state machine security model** focusing on maintaining confidentiality in systems.
 
@@ -158,32 +210,10 @@ Confidential  S-A   S-B   TS-B
 - **\*-Property**: User1 cannot write to DocB because Confidential < Secret
 - **Both properties allow** operations at the same security level
 
-## Access Control in Code and Taint Analysis
-
-**Taint analysis tracks the flow of untrusted data** through a program to identify potential security vulnerabilities.
-
-### Example of Taint Analysis in Code:
-
-```java
-// Tainted input (untrusted)
-String userInput = request.getParameter("username");  // TAINTED
-
-// Unsafe operation (SQL Injection vulnerability)
-String query1 = "SELECT * FROM users WHERE name = '" + userInput + "'";  // TAINTED
-
-// Safe operation (using parameterized query)
-PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
-stmt.setString(1, userInput);  // SANITIZED
-```
-
-**In this example**:
-- The input from ```request.getParameter()``` is considered tainted
-- Direct use of tainted data in SQL creates a vulnerability
-- Using parameterized queries sanitizes the input
 
 
 
-# Lecture 4 Web security
+# Web security
 
 ![[Pasted image 20250408195024.png]]
 www.example.com and example.com are not the same because www is just a subdomain. 
@@ -207,163 +237,17 @@ Security is fun when you make sure you do stuff properly
 
 Also client side scripting is a thing.
 
-# Lecture 5 web security 2
-
-Access controll
 Sanitize your data.
 Self-tweeting tweet. tweet deck read text as if it should be executed.
 
-- **1xx (Informational)**: The request was received and understood [4](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)[5](https://sidtechtalks.medium.com/15-a-complete-guide-list-of-status-code-in-http-119893639bfd).
-- **2xx (Successful)**: The request was successfully received [4](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+- **1xx (Informational)**: The request was received and understood.
+- **2xx (Successful)**: The request was successfully received.
 - **3xx (Redirection)**: Further action is required to complete the request.
-- **4xx (Client Error)**: The request contains bad syntax or cannot be fulfilled [6](https://httpstatus.io/http-status-codes). A common example is the **404** error, meaning page not found [2](https://umbraco.com/knowledge-base/http-status-codes/).
-- **5xx (Server Error)**: The server failed to fulfill an apparently valid request [6](https://httpstatus.io/http-status-codes).
-
-# Lecture 6
-A “reminder” / refresher on taint analysis
-
-Lecture 3 at the bottom.
+- **4xx (Client Error)**: The request contains bad syntax or cannot be fulfilled. 
+- **5xx (Server Error)**: The server failed to fulfill an apparently valid request.
 
 
-• An example taint analysis of a small program
-Lecture 3 at the bottom.
-
-## Uses
-- **Tracks untrusted data flow** through applications to detect injection vulnerabilities
-- Identifies SQL injection, XSS, and command injection risks
-- Operates via static (code analysis) or dynamic (runtime) approaches
-
-## Limitations
-- **Misses implicit flows** where tainted data affects control flow indirectly
-- **Struggles with custom sanitization** recognition
-- **Context insensitivity** issues - same data may be safe or dangerous depending on usage
-- **Performance overhead**, especially in dynamic analysis
-- **High false positive/negative rates** in complex applications
-- **Cannot detect** sophisticated sanitization bypasses or logic-based vulnerabilities
-
-**Best practice**: Use taint analysis as one component of a comprehensive security program rather than relying on it exclusively.
-
-• Notes on lattices
-Lecture 3
-• Notes on how to design a (taint-like) analysis
-- Look at all your inputs and outputs and pick the worst case.
-• Notes on how to solve flow equations (even recursive ones)
-* you just have to repeat the analysis until it doesnt change anymore, and then you take all your ins and outs (paths) and pick the worst case of them.
-• Notes on the work list algorithm
-
-**What it is:**
-A **generic graph traversal algorithm** that systematically explores all states reachable from a starting point. It's commonly used in computer science for tasks like model checking, program analysis, and graph exploration.
-
-**What it does:**
-- Starts with an **initial state** ```s```
-- **Finds all states** that can be reached by following transitions from the initial state
-- Keeps track of **visited states** (```passed```) to avoid revisiting them
-- Uses a **worklist** (```waiting```) to manage which states still need to be explored
-
-**Key variations:**
-- **Breadth-first search:** Use a **queue** for ```waiting``` (explores level by level)
-- **Depth-first search:** Use a **stack** for ```waiting``` (explores deeply first)
-- **Random:** Choose states randomly from ```waiting```
-
-**Important notes:**
-- The algorithm **always finds the same result** regardless of search order
-- **Performance varies significantly** depending on the search strategy chosen
-- Terminates when the state space is finite and all reachable states have been found
-
-
-
-![[Pasted image 20250605121511.png]]
-
-
-# Lecture 7 and 8 Formal methods
-- Why do we need formal methods?
-• Explicit State Reachability Checking
-• Abstract Interpretation
-• The Uninitialised Variable Analysis
-• The sign analysis
-
-## Why do we need formal methods?
-
-**Formal methods are needed to find bugs in programs** . The presentation emphasizes several key motivations:
-
-- **Game bugs demonstrate real-world problems** - from speedrunner-exploitable bugs to frustrating gameplay issues 
-- **Testing limitations** - We can't test all possible inputs, and traditional testing requires partitioning inputs into groups with similar behavior 
-- **Security implications** - An error may be an attack vector, making verification crucial in security contexts 
-- **Verification throughout development** - Formal methods can be applied at different stages from requirements to implementation 
-
-## Explicit State Reachability Checking
-
-**Explicit state reachability checking explores the complete state space** by executing programs with concrete values . Key characteristics include:
-
-- **Worklist algorithm** - Uses a systematic search through all reachable states starting from an initial state 
-- **State explosion problem** - The number of possible states grows exponentially (8-bit: 255 states, 32-bit: 4+ billion states) 
-- **Search strategies** - Can use breadth-first (queue), depth-first (stack), or random approaches 
-- **Completeness vs. scalability** - While theoretically complete, it may not terminate for large programs due to infinite state spaces 
-
-## Abstract Interpretation
-
-**Abstract interpretation executes programs with abstract values rather than concrete values** to achieve termination while maintaining soundness . The approach involves:
-
-- **Abstract domains** - Replace concrete values with abstract representations that capture relevant properties 
-- **Sound approximation** - Results are guaranteed to be correct (no false negatives) but may produce false positives because it can only check some code
-- **Termination guarantee** - By using finite abstract domains, the analysis is guaranteed to terminate 
-- **Trade-off principle** - "You can only have two" of soundness, completeness, and termination 
-
-### The Uninitialised Variable Analysis
-
-**The uninitialised variable analysis uses abstract interpretation with a simple two-element domain** :
-
-- **Abstract domain Di = {⊥, ⊤}** where ⊥ represents "uninitialised" and ⊤ represents "initialised" 
-- **Transfer functions** - Variable assignments set values to ⊤, while uninitialized variables remain ⊥ 
-- **Purpose** - Detects potential uses of uninitialised variables before they cause runtime errors 
-- **Memory handling** - Memory operations return ⊤ (assuming memory could contain any value) 
-
-### The Sign Analysis
-
-**The sign analysis tracks the sign of integer values using a lattice-based abstract domain** :
-
-- **Abstract domain Dsign = {+, -, 0, ⊤, ⊥}** with partial ordering where ⊥ is bottom and ⊤ is top 
-- **Arithmetic operations** - Abstract addition, multiplication, and comparison operations are defined with lookup tables 
-- **Example operations**:
-  - ```+ + + = +```, ```+ + - = ⊤```, ```+ + 0 = +``` 
-  - ```+ * + = +```, ```+ * - = -```, ```+ * 0 = 0``` 
-- **Applications** - Can detect division by zero, array bounds violations, and other sign-related errors 
-- **Precision vs. efficiency** - More abstract than explicit values but can be extended (e.g., distinguishing +0 and -0) for increased precision 
-
-
-
-
-### CFA Program Extension for Whiley Language
-Extend a Control Flow Analysis (CFA) program that processes Whiley language ASTs to handle all unimplemented visit methods and implement proper type checking.
-
-#### **1. Handle While Nodes**
-- **Type check**: Ensure the condition expression evaluates to boolean
-- **Evaluate**: Process all statements within the while block
-- **Model branching**: Create two control flow paths:
-  - ```Assume(cond)``` - when condition is true
-  - ```Assume(!cond)``` - when condition is false
-
-#### **2. Track Control Flow**
-- **Preserve path information**: Maintain start and end nodes for each visit method
-- **Enable traceability**: Track where execution came from and where it's going
-- **Support reachability analysis**: Determine if error states (like assert violations) can be reached
-
-#### **3. Implementation Strategy**
-Each visit method must:
-- Construct appropriate instructions
-- Update CFA start/end nodes
-- Maintain proper control flow connections
-
-#### **4. End Goal**
-Once complete, the CFA will enable **static verification** - analyzing program safety and correctness without execution by:
-- Simulating possible program paths
-- Checking reachability of error states
-- Making statements about program behavior
-
-
-
-# Lecture 9 Fuzzing
-
+# Fuzzing
 ## What is Fuzzing?
 Fuzzing is an automated testing technique that involves feeding invalid, unexpected, or random data as inputs to a program to discover bugs, crashes, and security vulnerabilities. The goal is to make the program behave unexpectedly or crash, which indicates potential security issues or bugs.
 
@@ -431,3 +315,136 @@ Instrumentation is the process of **adding extra code or monitoring capabilities
 
 ## fuzzing improvements
 Have some standard strings or whatever it should test. those things should be the most common things people get wrong. Essentially a common mistakes list it should go through. (yes i know it already exists but)
+
+# Injection attacks and taint analysis
+Taint Analysis
+
+**Taint analysis tracks the flow of untrusted data** through a program to identify potential security vulnerabilities.
+
+### Example of Taint Analysis in Code:
+
+```java
+// Tainted input (untrusted)
+String userInput = request.getParameter("username");  // TAINTED
+
+// Unsafe operation (SQL Injection vulnerability)
+String query1 = "SELECT * FROM users WHERE name = '" + userInput + "'";  // TAINTED
+
+// Safe operation (using parameterized query)
+PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users WHERE name = ?");
+stmt.setString(1, userInput);  // SANITIZED
+```
+
+**In this example**:
+- The input from ```request.getParameter()``` is considered tainted
+- Direct use of tainted data in SQL creates a vulnerability
+- Using parameterized queries sanitizes the input
+
+
+## Uses for taint analysis
+- **Tracks untrusted data flow** through applications to detect injection vulnerabilities
+- Identifies SQL injection, XSS, and command injection risks
+- Operates via static (code analysis) or dynamic (runtime) approaches
+
+## Limitations
+- **Misses implicit flows** where tainted data affects control flow indirectly
+- **Struggles with custom sanitization** recognition
+- **Context insensitivity** issues - same data may be safe or dangerous depending on usage
+- **Performance overhead**, especially in dynamic analysis
+- **High false positive/negative rates** in complex applications
+- **Cannot detect** sophisticated sanitization bypasses or logic-based vulnerabilities
+
+**Best practice**: Use taint analysis as one component of a comprehensive security program rather than relying on it exclusively.
+
+• Notes on how to design a (taint-like) analysis
+- Look at all your inputs and outputs and pick the worst case.
+• Notes on how to solve flow equations (even recursive ones)
+* you just have to repeat the analysis until it doesnt change anymore, and then you take all your ins and outs (paths) and pick the worst case of them.
+
+**What it is the work list algorithm:**
+A **generic graph traversal algorithm** that systematically explores all states reachable from a starting point. It's commonly used in computer science for tasks like model checking, program analysis, and graph exploration.
+
+**What it does:**
+- Starts with an **initial state** ```s```
+- **Finds all states** that can be reached by following transitions from the initial state
+- Keeps track of **visited states** (```passed```) to avoid revisiting them
+- Uses a **worklist** (```waiting```) to manage which states still need to be explored
+
+**Key variations:**
+- **Breadth-first search:** Use a **queue** for ```waiting``` (explores level by level)
+- **Depth-first search:** Use a **stack** for ```waiting``` (explores deeply first)
+- **Random:** Choose states randomly from ```waiting```
+
+**Important notes:**
+- The algorithm **always finds the same result** regardless of search order
+- **Performance varies significantly** depending on the search strategy chosen
+- Terminates when the state space is finite and all reachable states have been found
+
+
+# Secure information flow
+Indirect flows are scary because they can bybpass taint analysis
+```
+h = input ( HIGH );
+l = 17;
+while ( h > 0)
+	skip ;
+l = 0;
+```
+
+* Definition and discussion of the concept of “non-interference”
+• Notes on confidentiality attacks
+	• Direct flows
+	• Indirect flows
+	• Side-channels
+• Notes on defining confidentiality in a program
+	• Classifying variables
+	• Security lattice
+• Notes on using taint analysis
+	• How to extend it and why (relate to attacks)
+• Notes on type systems for confidentiality
+
+
+
+
+# Big tasks
+## Password manager
+
+Please look at the project we made here. It honestly look us forever because we made an actual webserver and everything.
+https://github.com/DeeKahy/BestPass
+
+But essentially we encountered a billion security issues.
+-  how do we handle passwords in the backend
+	- is what we made actually secure? (mostly)
+- How the hell should we handle frontend password. The user is not to be trusted, but every alternative is ultra tedious and still relies on the user bing a good boy.
+- Sessions or no sessions?
+- Authentication
+- Are our libraries even secure?
+- Admins can access stuff?
+- Password resets? (no just... no)
+
+## Whiley
+Extend a Control Flow Analysis (CFA) program that processes Whiley language ASTs to handle all unimplemented visit methods and implement proper type checking.
+
+#### **1. Handle While Nodes**
+- **Type check**: Ensure the condition expression evaluates to boolean
+- **Evaluate**: Process all statements within the while block
+- **Model branching**: Create two control flow paths:
+  - ```Assume(cond)``` - when condition is true
+  - ```Assume(!cond)``` - when condition is false
+
+#### **2. Track Control Flow**
+- **Preserve path information**: Maintain start and end nodes for each visit method
+- **Enable traceability**: Track where execution came from and where it's going
+- **Support reachability analysis**: Determine if error states (like assert violations) can be reached
+
+#### **3. Implementation Strategy**
+Each visit method must:
+- Construct appropriate instructions
+- Update CFA start/end nodes
+- Maintain proper control flow connections
+
+#### **4. End Goal**
+Once complete, the CFA will enable **static verification** - analyzing program safety and correctness without execution by:
+- Simulating possible program paths
+- Checking reachability of error states
+- Making statements about program behavior
