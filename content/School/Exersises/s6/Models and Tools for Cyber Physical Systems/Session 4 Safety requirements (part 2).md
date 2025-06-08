@@ -85,5 +85,10 @@ more to be found at [[State machine to Symbolic language]]
 ## Exercise 4
 ![[Pasted image 20250604170650.png]]
 
+A)
+
+
+
+B)
 
 
