@@ -105,18 +105,18 @@ If "some machine" is an invariant, then the system is safe.
 
 ## Quick Reference Table
 
-| Symbol | Meaning | Type |
-|--------|---------|------|
-| ∀ | For all | Universal quantifier |
-| ∃ | There exists | Existential quantifier |
-| ⊨ | Satisfies/models | Satisfaction relation |
-| ⊭ | Does not satisfy | Negated satisfaction |
-| ∧ | AND | Logical conjunction |
-| ∨ | OR | Logical disjunction |
-| ¬ | NOT | Logical negation |
-| → | Implies | Logical implication |
-| U | Until | Temporal operator |
-| \|...\| | Cardinality | Set size |
+| Symbol  | Meaning          | Type                   |
+| ------- | ---------------- | ---------------------- |
+| ∀       | For all          | Universal quantifier   |
+| ∃       | There exists     | Existential quantifier |
+| ⊨       | Satisfies/models | Satisfaction relation  |
+| ⊭       | Does not satisfy | Negated satisfaction   |
+| ∧       | AND              | Logical conjunction    |
+| ∨       | OR               | Logical disjunction    |
+| ¬       | NOT              | Logical negation       |
+| →       | Implies          | Logical implication    |
+| U       | Until            | Temporal operator      |
+| \|...\| | Cardinality      | Set size               |
 
 
 

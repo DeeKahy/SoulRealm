@@ -66,10 +66,21 @@ Train East = a
 ![[Pasted image 20250608115612.png]]
 
 
-
-
 ## Exercise 3
 ![[Pasted image 20250604170612.png]]
+
+
+
+Init x = m ∧ y = 0 mode = Loop
+
+   (mode = Loop ∧ x > 0 ∧ x' = x - 1 ∧ y' = y + n ∧ mode' = loop)
+∨ (mode = Loop ∧ x = 0 ∧ x' = x ∧ y' = y ∧ mode' = stop)
+
+So what's going on here is actually pretty simple.
+![[Pasted image 20250608122750.png]]
+
+more to be found at [[State machine to Symbolic language]]
+
 
 ## Exercise 4
 ![[Pasted image 20250604170650.png]]
