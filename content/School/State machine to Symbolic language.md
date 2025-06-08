@@ -18,7 +18,7 @@ So either the top part of the bottom part can happen, NOT BOTH
 
 
 
-look at [[A TODO Session 4 Safety requirements (part 2)]] for the actual tasks and lecture associated with it.
+look at [[Session 4 Safety requirements (part 2)]] for the actual tasks and lecture associated with it.
 
 
 ![[Pasted image 20250608122814.png]]
