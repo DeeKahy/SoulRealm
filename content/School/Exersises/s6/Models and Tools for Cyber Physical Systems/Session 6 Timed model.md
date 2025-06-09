@@ -53,15 +53,41 @@ More information on [[UPPAAL Model Notes]]
 # Exercise 5
 ![[Pasted image 20250606100827.png]]
 
+what values can A,B, and C have?
 A: 
+```
+What value can A have? (delay)
 0 <= x <= 5
 0 <= y <= 5
+```
+
+```
+What is the entry state from A to B?
+3 <= x <= 5
+3 <= y <= 5
+```
+
 
 B:
+```
+What value can B have? (delay)
 3 <= x <= 7
 3 <= y <= 7
+```
+
+```
+What is the entry state from B to C?
+4 <= x <= 7
+0 <= y <= 0
+```
+
+C:
+what values can C have? (delay)
+y gets reset to 0, which means that if we try counting y up to 6 (or more), x would then be 9 (the minimum which is 3 + 6 = 9) but x can AT MOST be = 8 because of the invariant.
+```
+4 <= x <= 8
+0 <= y <= 4
+```
 
 
-c:
-5 <= x <= 8
-4 <= y <= 8
+which ultimately means that everything except D is **NOT** reachable.

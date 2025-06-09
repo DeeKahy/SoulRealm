@@ -40,6 +40,7 @@
 
 ## Property Classifications
 
+
 ### Safety Properties
 Properties that state "something bad never happens" - can be violated in finite time
 
