@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+const int max=100;
+int x1, x2;
+clock y1, y2;</declaration>
+	<template>
+		<name x="5" y="5">A1</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-170" y="-34">
+			<label kind="invariant" x="-195" y="-68">y1&lt;=2</label>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-238" y="34">y1&gt;=1 &amp;&amp;
+x1&lt;=max</label>
+			<label kind="assignment" x="-144" y="34">x1++,
+y1=0</label>
+			<nail x="-238" y="34"/>
+			<nail x="-102" y="34"/>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">A2</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id1" x="-170" y="-34">
+			<label kind="invariant" x="-195" y="-68">y2&lt;=2</label>
+		</location>
+		<init ref="id1"/>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-229" y="34">y2&gt;=1 &amp;&amp;
+x2&lt;=max</label>
+			<label kind="assignment" x="-144" y="34">x2++,
+y2=0</label>
+			<nail x="-238" y="34"/>
+			<nail x="-102" y="34"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+system A1, A2;
+    </system>
+	<queries>
+		<query>
+			<formula>A[] (x2&lt;=2*x1 +2)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[] (x1&lt;=2*x2 +2)</formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>

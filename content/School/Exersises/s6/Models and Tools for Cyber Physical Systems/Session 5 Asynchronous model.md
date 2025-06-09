@@ -27,5 +27,7 @@ Then the output task is enabled since x is no longer empty. It takes x and remov
 ## Exercise 3
 ![[Pasted image 20250605101519.png]]
 
+![[Pasted image 20250609105615.png]]
 
-
+![[Pasted image 20250609105509.png]]
+![[Pasted image 20250609105544.png]]
