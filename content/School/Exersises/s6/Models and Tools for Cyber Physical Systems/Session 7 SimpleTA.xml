@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
 <nta>
 	<declaration>// Place global declarations here.
 clock x, y;</declaration>
@@ -28,28 +28,28 @@ clock x, y;</declaration>
 			<name x="194" y="68">F</name>
 		</location>
 		<init ref="id0"/>
-		<transition>
+		<transition id="id6">
 			<source ref="id2"/>
 			<target ref="id5"/>
 			<label kind="guard" x="136" y="76">x==7</label>
 		</transition>
-		<transition>
+		<transition id="id7">
 			<source ref="id2"/>
 			<target ref="id4"/>
 			<label kind="guard" x="153" y="8">x&lt;=4</label>
 		</transition>
-		<transition>
+		<transition id="id8">
 			<source ref="id2"/>
 			<target ref="id3"/>
 			<label kind="guard" x="136" y="-34">y&gt;=6</label>
 		</transition>
-		<transition>
+		<transition id="id9">
 			<source ref="id1"/>
 			<target ref="id2"/>
 			<label kind="guard" x="-8" y="8">y&gt;=4</label>
 			<label kind="assignment" x="59" y="34">y=0</label>
 		</transition>
-		<transition>
+		<transition id="id10">
 			<source ref="id0"/>
 			<target ref="id1"/>
 			<label kind="guard" x="-153" y="8">x&gt;=3</label>
@@ -60,19 +60,19 @@ clock x, y;</declaration>
 	<queries>
 		<query>
 			<formula>E&lt;&gt; Proc.F</formula>
-			<comment></comment>
+			<comment/>
 		</query>
 		<query>
 			<formula>E&lt;&gt; Proc.E</formula>
-			<comment></comment>
+			<comment/>
 		</query>
 		<query>
 			<formula>E&lt;&gt; Proc.D</formula>
-			<comment></comment>
+			<comment/>
 		</query>
 		<query>
-			<formula></formula>
-			<comment></comment>
+			<formula/>
+			<comment/>
 		</query>
 	</queries>
 </nta>
