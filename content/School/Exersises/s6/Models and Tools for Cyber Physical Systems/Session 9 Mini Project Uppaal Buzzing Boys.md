@@ -37,3 +37,47 @@ As optional scenarios you may also consider the following two alternative topolo
 - Design a single template for all boys.
 - For each boy, you may choose to remember the currently known secrets either in a local array of Booleans or using an integer variable (use a binary encoding such that if a boy knows the secrets of e.g. boy 1 and boy 3 but does not know the secrets of boy 2 and boy 4, the value in the integer variable will be (0101) binary = 5; you might find the operation **|** for a bitwise OR useful).
 - In order to model value passing when two boys make a phone call, you may use a shared variable and utilize that in a synchronization, the update of the outputting component precedes the update of the inputting component.  Alternatively you can use channel-arrays as in the Train Gate model that comes with the down load of UPPAAL.
+
+
+
+
+
+# Start
+
+
+![[Pasted image 20250610122251.png]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
