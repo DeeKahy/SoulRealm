@@ -43,12 +43,21 @@ As optional scenarios you may also consider the following two alternative topolo
 
 
 # Start
-
+## Task 1
+We went with making something like this. Every edge makes sure the two are synchronising, and there is logic for each boy to sync properly.
 
 ![[Pasted image 20250610122251.png]]
 
+![[Pasted image 20250610122926.png]]
 
+```c
+// Place global declarations here.
+chan Boy1_2, Boy1_3, Boy2_3;
 
+int Boy1_s1 = 1, Boy1_s2 = 0, Boy1_s3 = 0;
+int Boy2_s1 = 0, Boy2_s2 = 1, Boy2_s3 = 0;
+int Boy3_s1 = 0, Boy3_s2 = 0, Boy3_s3 = 1;
+```
 
 
 
