@@ -1,6 +1,13 @@
 #Exercises 
-a)
+
+- We study the syntax and semantics of the continuous-time model
+- We show how to model continuous systems using differential equations.
+- We study how to solve differential equations numerically.
+- We define the notion of stability.
+
+## Exercise 1
 ![[Pasted image 20250407095907.png]]
+a)
 
 ```python
 def euler_method (f , x0 , h , N ):
@@ -42,6 +49,9 @@ t, x = euler_method(f, 0, 0, 1, 5)
 
 ```
 
+
+
+[[What is an ODE (ODEs)]]
 c)
 ![[Pasted image 20250407102034.png]]
 
@@ -70,7 +80,45 @@ def f(x, t):
     return t  # The function dx/dt = t
 
 # Example call
-t, x = euler_method(f, [1], 0, 1, 5)
+t, x = euler_method(f, [1], 0, 1, 8)
 
 ```
+
+D)
+![[Pasted image 20250610133155.png]]
+
+
+
+## Exercise 2
+
+![[Pasted image 20250610125047.png]]
+![[Pasted image 20250610125059.png]]
+
+
+## Exercise 3
+
+![[Pasted image 20250610125129.png]]
+
+
+## Exercise 4
+![[Pasted image 20250610125149.png]]
+![[Pasted image 20250610125203.png]]
+
+
+## Exercise 5
+![[Pasted image 20250610125231.png]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
