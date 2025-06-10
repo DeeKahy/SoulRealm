@@ -24,6 +24,7 @@ you can also look at the last part of [[Session 6 Timed model]]
 
 there must be a mistake in this somewhere. Either the human doesnt simulate properly or whatever they are asking is literally impossible, because it can take the bad transition whenever.
 
+Teacher forgot to upload a solution to moodle. He literally mentions it and there is nothing for us to look at.
 
 # Exercise 3
 ![[Pasted image 20250606101103.png]]
@@ -48,5 +49,27 @@ Liveness Properties:
 
 Deadlock:
 1. it might deadlock and that is bad
+
+
+
+fuck this teacher is BAD at explaining and making exercises. A lot of people have no fucking clue what is going on, and there is no actual solution we can look at.
 # Exercise 4
 ![[Pasted image 20250606101122.png]]
+
+A)
+![[Pasted image 20250609152835.png]]
+Essentially we made this prompt and then just brute forced out number to the lowest we possibly could. There is probably a way to find it automatically, but this works.
+
+B)
+![[Pasted image 20250609153038.png]]
+![[Pasted image 20250609153206.png]]
+
+Same as before just brute force until you get a result that fails and succeeds with a difference of 1.
+
+
+
+C)
+![[Pasted image 20250609153038.png]]
+![[Pasted image 20250609153600.png]]
+
+
