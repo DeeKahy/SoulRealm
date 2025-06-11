@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+clock c;
+
+int x = 0;
+int y = 0;
+
+int hit = 0;
+
+int counter = 0;  // Adjust upper bound as needed
+
+</declaration>
+	<template>
+		<name>ticker</name>
+		<location id="id0" x="-42" y="0">
+			<label kind="invariant" x="-52" y="17">c &lt;= 1</label>
+		</location>
+		<init ref="id0"/>
+		<transition id="id1">
+			<source ref="id0"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-102" y="-42">c&gt;=1</label>
+			<label kind="assignment" x="-102" y="-204">x := x + 1,
+y := y + 1,
+counter := counter + 1,
+c := 0</label>
+			<nail x="-110" y="-119"/>
+			<nail x="25" y="-119"/>
+		</transition>
+	</template>
+	<template>
+		<name x="5" y="5">worker</name>
+		<declaration>// Place local declarations here.
+</declaration>
+		<location id="id2" x="-76" y="0">
+			<label kind="invariant" x="-153" y="0">x &lt;=10</label>
+		</location>
+		<location id="id3" x="212" y="0">
+			<label kind="invariant" x="195" y="17">x &lt;= 60 &amp;&amp;
+y &lt;= 4</label>
+		</location>
+		<init ref="id3"/>
+		<transition id="id4">
+			<source ref="id3"/>
+			<target ref="id3"/>
+			<label kind="guard" x="340" y="-34">y &gt;=1</label>
+			<label kind="assignment" x="340" y="0">y := 0,
+hit := hit + 1</label>
+			<nail x="331" y="-42"/>
+			<nail x="331" y="51"/>
+		</transition>
+		<transition id="id5">
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-42" y="-42">x &gt;=5</label>
+			<label kind="assignment" x="85" y="-68">x := 0,
+y := 0</label>
+			<nail x="42" y="-26"/>
+		</transition>
+		<transition id="id6">
+			<source ref="id3"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-17" y="25">x &gt;=40</label>
+			<label kind="assignment" x="68" y="25">x := 0</label>
+			<nail x="42" y="25"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+W = worker();
+T = ticker();
+// List one or more processes to be composed into a system.
+system W, T;
+</system>
+	<queries>
+		<query>
+			<formula>E&lt;&gt; (counter &gt;= 70 &amp;&amp; hit == 13)
+</formula>
+			<comment/>
+			<result outcome="success" type="quality" timestamp="2025-06-09 13:14:15 +0200">
+			</result>
+		</query>
+	</queries>
+</nta>
