@@ -61,4 +61,4 @@ The above order also seems to be valid?
 
 The only intricate aspect is the substitution. We first have to rename minute to hour before we
 can rename second to minute.
-> `(SecondToMinute || SecondToMinute[minute 7 -> hour][second -> minute]) \ minute`
+> `(SecondToMinute || SecondToMinute[minute -> hour][second -> minute]) \ minute`

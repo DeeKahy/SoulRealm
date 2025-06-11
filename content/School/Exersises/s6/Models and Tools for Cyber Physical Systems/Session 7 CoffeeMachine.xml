@@ -3,22 +3,24 @@
 <nta>
 	<declaration>// Synchronization channels.
 // Urgent to prevent delay.
-urgent chan coin, coffee, pub;</declaration>
+urgent chan coin, coffee;
+
+urgent broadcast chan pub;</declaration>
 	<template>
 		<name x="5" y="5">Person</name>
 		<declaration>clock y;</declaration>
-		<location id="id0" x="119" y="68">
-			<name x="127" y="36">Go</name>
+		<location id="id0" x="120" y="72">
+			<name x="128" y="40">Go</name>
 		</location>
-		<location id="id1" x="17" y="195">
-			<name x="-47" y="171">WaitCof</name>
-			<label kind="invariant" x="-47" y="187">y&lt;=2</label>
+		<location id="id1" x="16" y="192">
+			<name x="-48" y="168">WaitCof</name>
+			<label kind="invariant" x="-48" y="184">y&lt;=2</label>
 		</location>
 		<location id="id2" x="16" y="112">
-			<name x="-42" y="93">Ready</name>
+			<name x="-40" y="88">Ready</name>
 		</location>
 		<location id="id3" x="16" y="32">
-			<name x="-59" y="8">WaitCoin</name>
+			<name x="-56" y="8">WaitCoin</name>
 			<label kind="invariant" x="-32" y="24">y&lt;=3</label>
 		</location>
 		<location id="id4" x="16" y="-48">
@@ -45,12 +47,12 @@ urgent chan coin, coffee, pub;</declaration>
 		<transition id="id8">
 			<source ref="id3"/>
 			<target ref="id2"/>
-			<label kind="guard" x="24" y="56">y==3</label>
+			<label kind="guard" x="25" y="59">y==3</label>
 		</transition>
 		<transition id="id9">
 			<source ref="id4"/>
 			<target ref="id3"/>
-			<label kind="synchronisation" x="24" y="-32">coin!</label>
+			<label kind="synchronisation" x="25" y="-34">coin!</label>
 			<label kind="assignment" x="24" y="-16">y=0</label>
 		</transition>
 	</template>
@@ -58,45 +60,70 @@ urgent chan coin, coffee, pub;</declaration>
 		<name>Machine</name>
 		<parameter>const int brewTime, const int timeOut</parameter>
 		<declaration>clock x;</declaration>
-		<location id="id10" x="-232" y="24">
-			<name x="-248" y="32">Ready</name>
+		<location id="id10" x="-238" y="25">
+			<name x="-254" y="33">Ready</name>
+			<label kind="invariant" x="-254" y="50">x &lt;=5</label>
 		</location>
-		<location id="id11" x="-232" y="-56">
-			<name x="-304" y="-80">Brewing</name>
+		<location id="id11" x="-238" y="-59">
+			<name x="-310" y="-83">Brewing</name>
+			<label kind="invariant" x="-248" y="-42">x &gt;= brewTime</label>
 		</location>
-		<location id="id12" x="-232" y="-136">
-			<name x="-272" y="-160">Idle</name>
+		<location id="id12" x="-238" y="-136">
+			<name x="-278" y="-160">Idle</name>
 		</location>
 		<init ref="id12"/>
 		<transition id="id13">
 			<source ref="id10"/>
 			<target ref="id12"/>
+			<label kind="guard" x="-467" y="-59">x &gt;= timeOut</label>
+			<label kind="assignment" x="-425" y="-42">x := 0</label>
 			<nail x="-360" y="24"/>
 			<nail x="-360" y="-136"/>
 		</transition>
 		<transition id="id14">
 			<source ref="id10"/>
 			<target ref="id12"/>
-			<nail x="-104" y="24"/>
-			<nail x="-104" y="-136"/>
+			<label kind="synchronisation" x="-85" y="-93">pub?</label>
+			<label kind="assignment" x="-85" y="-42">x := 0</label>
+			<nail x="-88" y="25"/>
+			<nail x="-88" y="-135"/>
 		</transition>
 		<transition id="id15">
 			<source ref="id11"/>
 			<target ref="id10"/>
-			<label kind="guard" x="-221" y="-34">Person.y == 2</label>
+			<label kind="synchronisation" x="-314" y="-34">coffee!</label>
 		</transition>
 		<transition id="id16">
 			<source ref="id12"/>
 			<target ref="id11"/>
-			<label kind="synchronisation" x="-221" y="-119">coin?</label>
+			<label kind="synchronisation" x="-238" y="-114">coin?</label>
+			<label kind="assignment" x="-238" y="-97">x := 0</label>
 		</transition>
 	</template>
 	<template>
 		<name>Observer</name>
-		<declaration>clock z;</declaration>
-		<location id="id17" x="-184" y="-168">
+		<declaration>clock z;
+
+</declaration>
+		<location id="id17" x="-187" y="-170">
+		</location>
+		<location id="id18" x="-374" y="-170">
+			<urgent/>
 		</location>
 		<init ref="id17"/>
+		<transition id="id19">
+			<source ref="id17"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="-211" y="-259">pub?</label>
+			<label kind="assignment" x="-211" y="-242">z := 0</label>
+			<nail x="-229" y="-255"/>
+			<nail x="-119" y="-229"/>
+		</transition>
+		<transition id="id20">
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="guard" x="-357" y="-195">z &gt;= 8</label>
+		</transition>
 	</template>
 	<system>machine = Machine(1, 8);
 system Person, machine, Observer;</system>

@@ -152,19 +152,15 @@ void set_pause() {
 	<template>
 		<name>SetSpeed</name>
 		<declaration>int decrease_speed(int s) {
-    if ( s &gt; 0 )
+    if ( s &gt; MIN_SPEED ) // Set the proper bound for our lowest speed.
         s--;
-    if ( s &lt; MIN_SPEED )
-        s = MIN_SPEED;
     return s;
 }
 
 
 int increase_speed(int s) {
-    if ( s &lt; NAT_BOUND )
+    if ( s &lt; MAX_SPEED ) // Set the proper bound to the max speed.
         s++;
-    if ( s &gt; MAX_SPEED )
-        s = MAX_SPEED;
     return s;
 }</declaration>
 		<location id="id15" x="-34" y="0">
@@ -254,22 +250,32 @@ system DriverFast, Cround, SetSpeed;
 		<query>
 			<formula>A[] desired_speed &lt;= 120</formula>
 			<comment/>
+			<result outcome="success" type="quality" timestamp="2025-06-11 11:36:24 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>A[] not deadlock</formula>
 			<comment/>
+			<result outcome="success" type="quality" timestamp="2025-06-11 11:36:25 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>A[] (desired_speed &gt;= MIN_SPEED &amp;&amp; desired_speed &lt;= MAX_SPEED)</formula>
 			<comment/>
+			<result outcome="success" type="quality" timestamp="2025-06-11 11:36:26 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>E&lt;&gt; DriverFast.stable &amp;&amp; desired_speed == 78</formula>
 			<comment/>
+			<result outcome="success" type="quality" timestamp="2025-06-11 11:45:49 +0200">
+			</result>
 		</query>
 		<query>
 			<formula>A&lt;&gt; DriverFast.stable &amp;&amp; desired_speed == 78</formula>
 			<comment/>
+			<result outcome="success" type="quality" timestamp="2025-06-11 11:45:47 +0200">
+			</result>
 		</query>
 	</queries>
 </nta>
