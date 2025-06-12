@@ -23,7 +23,8 @@ bool Boy4_s1 = 0, Boy4_s2 = 0, Boy4_s3 = 0, Boy4_s4 = 1;
 			<label kind="synchronisation" x="-102" y="59">Boy3_4?</label>
 			<label kind="assignment" x="-178" y="76">Boy4_s1 := Boy4_s1 + Boy3_s1,
 Boy4_s2 := Boy4_s2 + Boy3_s2,
-Boy4_s3 := Boy4_s3 + Boy3_s3</label>
+Boy4_s3 := Boy4_s3 + Boy3_s3,
+Boy4_s4 := Boy4_s4 + Boy3_s4</label>
 			<nail x="-136" y="59"/>
 			<nail x="-17" y="59"/>
 		</transition>
@@ -31,9 +32,10 @@ Boy4_s3 := Boy4_s3 + Boy3_s3</label>
 			<source ref="id0"/>
 			<target ref="id0"/>
 			<label kind="synchronisation" x="-102" y="-119">Boy4_1?</label>
-			<label kind="assignment" x="-187" y="-178">Boy4_s1 := Boy4_s1 + Boy1_s1,
+			<label kind="assignment" x="-187" y="-204">Boy4_s1 := Boy4_s1 + Boy1_s1,
 Boy4_s2 := Boy4_s2 + Boy1_s2,
-Boy4_s3 := Boy4_s3 + Boy1_s3</label>
+Boy4_s3 := Boy4_s3 + Boy1_s3,
+Boy4_s4 := Boy4_s4 + Boy1_s4</label>
 			<nail x="-161" y="-93"/>
 			<nail x="17" y="-93"/>
 		</transition>
@@ -49,7 +51,8 @@ Boy4_s3 := Boy4_s3 + Boy1_s3</label>
 			<label kind="synchronisation" x="-102" y="59">Boy3_4?</label>
 			<label kind="assignment" x="-178" y="76">Boy3_s1 := Boy4_s1 + Boy3_s1,
 Boy3_s2 := Boy4_s2 + Boy3_s2,
-Boy3_s3 := Boy4_s3 + Boy3_s3</label>
+Boy3_s3 := Boy4_s3 + Boy3_s3,
+Boy3_s4 := Boy4_s4 + Boy3_s4</label>
 			<nail x="-136" y="59"/>
 			<nail x="-17" y="59"/>
 		</transition>
@@ -57,9 +60,10 @@ Boy3_s3 := Boy4_s3 + Boy3_s3</label>
 			<source ref="id3"/>
 			<target ref="id3"/>
 			<label kind="synchronisation" x="-102" y="-119">Boy2_3?</label>
-			<label kind="assignment" x="-153" y="-178">Boy3_s1 := Boy3_s1 + Boy2_s1,
+			<label kind="assignment" x="-170" y="-195">Boy3_s1 := Boy3_s1 + Boy2_s1,
 Boy3_s2 := Boy3_s2 + Boy2_s2,
-Boy3_s3 := Boy3_s3 + Boy2_s3</label>
+Boy3_s3 := Boy3_s3 + Boy2_s3,
+Boy3_s4 := Boy3_s4 + Boy2_s4</label>
 			<nail x="-161" y="-93"/>
 			<nail x="17" y="-93"/>
 		</transition>
@@ -75,7 +79,8 @@ Boy3_s3 := Boy3_s3 + Boy2_s3</label>
 			<label kind="synchronisation" x="-76" y="-1062">Boy2_3?</label>
 			<label kind="assignment" x="-153" y="-1045">Boy2_s1 := Boy2_s1 + Boy3_s1,
 Boy2_s2 := Boy2_s2 + Boy3_s2,
-Boy2_s3 := Boy2_s3 + Boy3_s3</label>
+Boy2_s3 := Boy2_s3 + Boy3_s3,
+Boy2_s4 := Boy2_s4 + Boy3_s4</label>
 			<nail x="-111" y="-1062"/>
 			<nail x="8" y="-1062"/>
 		</transition>
@@ -83,9 +88,10 @@ Boy2_s3 := Boy2_s3 + Boy3_s3</label>
 			<source ref="id6"/>
 			<target ref="id6"/>
 			<label kind="synchronisation" x="-76" y="-1241">Boy1_2?</label>
-			<label kind="assignment" x="-161" y="-1300">Boy2_s1 := Boy2_s1 + Boy1_s1,
+			<label kind="assignment" x="-161" y="-1334">Boy2_s1 := Boy2_s1 + Boy1_s1,
 Boy2_s2 := Boy2_s2 + Boy1_s2,
-Boy2_s3 := Boy2_s3 + Boy1_s3</label>
+Boy2_s3 := Boy2_s3 + Boy1_s3,
+Boy2_s4 := Boy2_s4 + Boy1_s4</label>
 			<nail x="-136" y="-1214"/>
 			<nail x="42" y="-1214"/>
 		</transition>
@@ -101,7 +107,8 @@ Boy2_s3 := Boy2_s3 + Boy1_s3</label>
 			<label kind="synchronisation" x="-102" y="59">Boy4_1?</label>
 			<label kind="assignment" x="-178" y="76">Boy1_s1 := Boy1_s1 + Boy4_s1,
 Boy1_s2 := Boy1_s2 + Boy4_s2,
-Boy1_s3 := Boy1_s3 + Boy4_s3</label>
+Boy1_s3 := Boy1_s3 + Boy4_s3,
+Boy1_s4 := Boy1_s4 + Boy4_s4</label>
 			<nail x="-136" y="59"/>
 			<nail x="-17" y="59"/>
 		</transition>
@@ -111,7 +118,8 @@ Boy1_s3 := Boy1_s3 + Boy4_s3</label>
 			<label kind="synchronisation" x="-102" y="-119">Boy1_2?</label>
 			<label kind="assignment" x="-187" y="-178">Boy1_s1 := Boy1_s1 + Boy2_s1,
 Boy1_s2 := Boy1_s2 + Boy2_s2,
-Boy1_s3 := Boy1_s3 + Boy2_s3</label>
+Boy1_s3 := Boy1_s3 + Boy2_s3,
+Boy1_s4 := Boy1_s4 + Boy2_s4</label>
 			<nail x="-161" y="-93"/>
 			<nail x="17" y="-93"/>
 		</transition>
@@ -181,8 +189,9 @@ Boy1_s3 := Boy1_s3 + Boy2_s3</label>
 	<system>boy1 = Boy1();
 boy2 = Boy2();
 boy3 = Boy3();
+boy4 = Boy4();
 network = Network();
-system boy1, boy2, boy3, network;
+system boy1, boy2, boy3, boy4, network;
 </system>
 	<queries>
 		<query>
