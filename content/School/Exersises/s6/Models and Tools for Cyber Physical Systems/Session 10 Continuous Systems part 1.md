@@ -95,6 +95,52 @@ D)
 ![[Pasted image 20250610125059.png]]
 
 
+B)
+```python
+def euler_method(f, x0, t0, h, N):
+    # Initialize arrays to store results
+    # x will be a list of vectors, each containing [position, velocity]
+    x = [None] * (N + 2)
+    t = [0] * (N + 2)
+
+    # Set initial conditions
+    x[0] = x0.copy()  # Store the full initial state vector
+    t[0] = t0
+
+    # Perform Euler method iterations
+    for i in range(N + 1):
+        print(f"Step {i}: position = {x[i][0]:.3f}, velocity = {x[i][1]:.3f}")
+        t[i + 1] = t[i] + h  # Update time
+
+        # Get derivatives from f function
+        derivatives = f(x[i], t[i])
+
+        # Update state vector using Euler formula
+        x[i + 1] = [x[i][j] + h * derivatives[j] for j in range(len(x[i]))]
+
+    return t, x
+
+def f(x, t):
+    F = 1000      # Applied force
+    m = 1000     # Mass
+    k = 50       # Damping coefficient
+
+    # x[0] is position, x[1] is velocity
+    der_x = x[1]                           # dx/dt = velocity
+    der_v = -k/m * x[1] + F/m             # dv/dt = acceleration
+
+    return [der_x, der_v]
+
+# Example call with initial position=1, initial velocity=0
+t, x = euler_method(f, [1, 0], 0, 1, 88)
+
+# Print final results
+print("\nFinal Results:")
+for i in range(len(t)-1):  # -1 because we have N+2 elements but only N+1 are used
+    print(f"t[{i}] = {t[i]}, position = {x[i][0]:.3f}, velocity = {x[i][1]:.3f}")
+
+```
+
 ## Exercise 3
 
 ![[Pasted image 20250610125129.png]]

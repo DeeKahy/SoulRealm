@@ -2,11 +2,12 @@
 <!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
 <nta>
 	<declaration>// Place global declarations here.
-chan Boy1_2, Boy1_3, Boy2_3;
+chan Boy1_2, Boy1_3, Boy4_1, Boy2_3, Boy2_4, Boy3_4;
 
-int Boy1_s1 = 1, Boy1_s2 = 0, Boy1_s3 = 0;
-int Boy2_s1 = 0, Boy2_s2 = 1, Boy2_s3 = 0;
-int Boy3_s1 = 0, Boy3_s2 = 0, Boy3_s3 = 1;
+bool Boy1_s1 = 1, Boy1_s2 = 0, Boy1_s3 = 0, Boy1_s4 = 0;
+bool Boy2_s1 = 0, Boy2_s2 = 1, Boy2_s3 = 0, Boy2_s4 = 0;
+bool Boy3_s1 = 0, Boy3_s2 = 0, Boy3_s3 = 1, Boy3_s4 = 0;
+bool Boy4_s1 = 0, Boy4_s2 = 0, Boy4_s3 = 0, Boy4_s4 = 1;
 
 
 
@@ -19,20 +20,22 @@ int Boy3_s1 = 0, Boy3_s2 = 0, Boy3_s3 = 1;
 		<transition id="id1">
 			<source ref="id0"/>
 			<target ref="id0"/>
-			<label kind="synchronisation" x="-102" y="59">Boy4_3!</label>
-			<label kind="assignment" x="-178" y="76">Boy3_s1 := Boy1_s1 + Boy3_s1,
-Boy3_s2 := Boy1_s2 + Boy3_s2,
-Boy3_s3 := Boy1_s3 + Boy3_s3</label>
+			<label kind="synchronisation" x="-102" y="59">Boy3_4?</label>
+			<label kind="assignment" x="-178" y="76">Boy4_s1 := Boy4_s1 + Boy3_s1,
+Boy4_s2 := Boy4_s2 + Boy3_s2,
+Boy4_s3 := Boy4_s3 + Boy3_s3,
+Boy4_s4 := Boy4_s4 + Boy3_s4</label>
 			<nail x="-136" y="59"/>
 			<nail x="-17" y="59"/>
 		</transition>
 		<transition id="id2">
 			<source ref="id0"/>
 			<target ref="id0"/>
-			<label kind="synchronisation" x="-102" y="-119">Boy4_1!</label>
-			<label kind="assignment" x="-153" y="-178">Boy4_s1 := Boy3_s1 + Boy2_s1,
-Boy4_s2 := Boy3_s2 + Boy2_s2,
-Boy4_s3 := Boy3_s3 + Boy2_s3</label>
+			<label kind="synchronisation" x="-102" y="-119">Boy4_1?</label>
+			<label kind="assignment" x="-187" y="-204">Boy4_s1 := Boy4_s1 + Boy1_s1,
+Boy4_s2 := Boy4_s2 + Boy1_s2,
+Boy4_s3 := Boy4_s3 + Boy1_s3,
+Boy4_s4 := Boy4_s4 + Boy1_s4</label>
 			<nail x="-161" y="-93"/>
 			<nail x="17" y="-93"/>
 		</transition>
@@ -45,20 +48,22 @@ Boy4_s3 := Boy3_s3 + Boy2_s3</label>
 		<transition id="id4">
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="synchronisation" x="-102" y="59">Boy3_4!</label>
+			<label kind="synchronisation" x="-102" y="59">Boy3_4?</label>
 			<label kind="assignment" x="-178" y="76">Boy3_s1 := Boy4_s1 + Boy3_s1,
 Boy3_s2 := Boy4_s2 + Boy3_s2,
-Boy3_s3 := Boy4_s3 + Boy3_s3</label>
+Boy3_s3 := Boy4_s3 + Boy3_s3,
+Boy3_s4 := Boy4_s4 + Boy3_s4</label>
 			<nail x="-136" y="59"/>
 			<nail x="-17" y="59"/>
 		</transition>
 		<transition id="id5">
 			<source ref="id3"/>
 			<target ref="id3"/>
-			<label kind="synchronisation" x="-102" y="-119">Boy2_3!</label>
-			<label kind="assignment" x="-153" y="-178">Boy3_s1 := Boy3_s1 + Boy2_s1,
+			<label kind="synchronisation" x="-102" y="-119">Boy2_3?</label>
+			<label kind="assignment" x="-170" y="-195">Boy3_s1 := Boy3_s1 + Boy2_s1,
 Boy3_s2 := Boy3_s2 + Boy2_s2,
-Boy3_s3 := Boy3_s3 + Boy2_s3</label>
+Boy3_s3 := Boy3_s3 + Boy2_s3,
+Boy3_s4 := Boy3_s4 + Boy2_s4</label>
 			<nail x="-161" y="-93"/>
 			<nail x="17" y="-93"/>
 		</transition>
@@ -71,20 +76,22 @@ Boy3_s3 := Boy3_s3 + Boy2_s3</label>
 		<transition id="id7">
 			<source ref="id6"/>
 			<target ref="id6"/>
-			<label kind="synchronisation" x="-76" y="-1062">Boy2_3!</label>
+			<label kind="synchronisation" x="-76" y="-1062">Boy2_3?</label>
 			<label kind="assignment" x="-153" y="-1045">Boy2_s1 := Boy2_s1 + Boy3_s1,
 Boy2_s2 := Boy2_s2 + Boy3_s2,
-Boy2_s3 := Boy2_s3 + Boy3_s3</label>
+Boy2_s3 := Boy2_s3 + Boy3_s3,
+Boy2_s4 := Boy2_s4 + Boy3_s4</label>
 			<nail x="-111" y="-1062"/>
 			<nail x="8" y="-1062"/>
 		</transition>
 		<transition id="id8">
 			<source ref="id6"/>
 			<target ref="id6"/>
-			<label kind="synchronisation" x="-77" y="-1240">Boy1_2!</label>
-			<label kind="assignment" x="-161" y="-1300">Boy2_s1 := Boy2_s1 + Boy1_s1,
+			<label kind="synchronisation" x="-76" y="-1241">Boy1_2?</label>
+			<label kind="assignment" x="-161" y="-1334">Boy2_s1 := Boy2_s1 + Boy1_s1,
 Boy2_s2 := Boy2_s2 + Boy1_s2,
-Boy2_s3 := Boy2_s3 + Boy1_s3</label>
+Boy2_s3 := Boy2_s3 + Boy1_s3,
+Boy2_s4 := Boy2_s4 + Boy1_s4</label>
 			<nail x="-136" y="-1214"/>
 			<nail x="42" y="-1214"/>
 		</transition>
@@ -97,20 +104,22 @@ Boy2_s3 := Boy2_s3 + Boy1_s3</label>
 		<transition id="id10">
 			<source ref="id9"/>
 			<target ref="id9"/>
-			<label kind="synchronisation" x="-102" y="59">Boy4_1!</label>
+			<label kind="synchronisation" x="-102" y="59">Boy4_1?</label>
 			<label kind="assignment" x="-178" y="76">Boy1_s1 := Boy1_s1 + Boy4_s1,
 Boy1_s2 := Boy1_s2 + Boy4_s2,
-Boy1_s3 := Boy1_s3 + Boy4_s3</label>
+Boy1_s3 := Boy1_s3 + Boy4_s3,
+Boy1_s4 := Boy1_s4 + Boy4_s4</label>
 			<nail x="-136" y="59"/>
 			<nail x="-17" y="59"/>
 		</transition>
 		<transition id="id11">
 			<source ref="id9"/>
 			<target ref="id9"/>
-			<label kind="synchronisation" x="-102" y="-119">Boy1_2!</label>
+			<label kind="synchronisation" x="-102" y="-119">Boy1_2?</label>
 			<label kind="assignment" x="-187" y="-178">Boy1_s1 := Boy1_s1 + Boy2_s1,
 Boy1_s2 := Boy1_s2 + Boy2_s2,
-Boy1_s3 := Boy1_s3 + Boy2_s3</label>
+Boy1_s3 := Boy1_s3 + Boy2_s3,
+Boy1_s4 := Boy1_s4 + Boy2_s4</label>
 			<nail x="-161" y="-93"/>
 			<nail x="17" y="-93"/>
 		</transition>
@@ -135,53 +144,54 @@ Boy1_s3 := Boy1_s3 + Boy2_s3</label>
 		<transition id="id16">
 			<source ref="id15"/>
 			<target ref="id12"/>
-			<label kind="synchronisation" x="102" y="17">Boy3_4?</label>
+			<label kind="synchronisation" x="102" y="17">Boy3_4!</label>
 		</transition>
 		<transition id="id17">
 			<source ref="id14"/>
 			<target ref="id15"/>
-			<label kind="synchronisation" x="238" y="-102">Boy4_1?</label>
+			<label kind="synchronisation" x="238" y="-102">Boy4_1!</label>
 		</transition>
 		<transition id="id18">
 			<source ref="id15"/>
 			<target ref="id14"/>
-			<label kind="synchronisation" x="238" y="-85">Boy4_1?</label>
+			<label kind="synchronisation" x="238" y="-85">Boy4_1!</label>
 			<nail x="263" y="-51"/>
 		</transition>
 		<transition id="id19">
 			<source ref="id12"/>
 			<target ref="id15"/>
-			<label kind="synchronisation" x="102" y="34">Boy3_4?</label>
+			<label kind="synchronisation" x="102" y="34">Boy3_4!</label>
 			<nail x="161" y="34"/>
 		</transition>
 		<transition id="id20">
 			<source ref="id13"/>
 			<target ref="id12"/>
-			<label kind="synchronisation" x="238" y="127">Boy2_3?</label>
+			<label kind="synchronisation" x="238" y="127">Boy2_3!</label>
 			<nail x="263" y="119"/>
 		</transition>
 		<transition id="id21">
 			<source ref="id12"/>
 			<target ref="id13"/>
-			<label kind="synchronisation" x="238" y="144">Boy2_3?</label>
+			<label kind="synchronisation" x="238" y="144">Boy2_3!</label>
 		</transition>
 		<transition id="id22">
 			<source ref="id13"/>
 			<target ref="id14"/>
-			<label kind="synchronisation" x="365" y="17">Boy1_2?</label>
+			<label kind="synchronisation" x="365" y="17">Boy1_2!</label>
 		</transition>
 		<transition id="id23">
 			<source ref="id14"/>
 			<target ref="id13"/>
-			<label kind="synchronisation" x="365" y="34">Boy1_2?</label>
+			<label kind="synchronisation" x="365" y="34">Boy1_2!</label>
 			<nail x="357" y="42"/>
 		</transition>
 	</template>
 	<system>boy1 = Boy1();
 boy2 = Boy2();
 boy3 = Boy3();
+boy4 = Boy4();
 network = Network();
-system boy1, boy2, boy3, network;
+system boy1, boy2, boy3, boy4, network;
 </system>
 	<queries>
 		<query>
@@ -189,9 +199,10 @@ system boy1, boy2, boy3, network;
 			<comment/>
 		</query>
 		<query>
-			<formula>E&lt;&gt; not ((Boy1_s1 &gt; 0) &amp;&amp; (Boy1_s2 &gt; 0) &amp;&amp; (Boy1_s3 &gt; 0) &amp;&amp; (Boy2_s1 &gt; 0) &amp;&amp; (Boy2_s2 &gt; 0) &amp;&amp; (Boy2_s3 &gt; 0) &amp;&amp; (Boy3_s1 &gt; 0) &amp;&amp; (Boy3_s2 &gt; 0) &amp;&amp; (Boy3_s3 &gt; 0))</formula>
+			<formula>E&lt;&gt; not ((Boy1_s1 &gt; 0) &amp;&amp; (Boy1_s2 &gt; 0) &amp;&amp; (Boy1_s3 &gt; 0) &amp;&amp; (Boy1_s4 &gt; 0) &amp;&amp; (Boy2_s1 &gt; 0) &amp;&amp; (Boy2_s2 &gt; 0) &amp;&amp; (Boy2_s3 &gt; 0) &amp;&amp; (Boy2_s4 &gt; 0) &amp;&amp; (Boy3_s1 &gt; 0) &amp;&amp; (Boy3_s2 &gt; 0) &amp;&amp; (Boy3_s3 &gt; 0) &amp;&amp; (Boy3_s4 &gt; 0) &amp;&amp; (Boy4_s1 &gt; 0) &amp;&amp; (Boy4_s2 &gt; 0) &amp;&amp; (Boy4_s3 &gt; 0) &amp;&amp; (Boy4_s4 &gt; 0))
+</formula>
 			<comment/>
-			<result outcome="success" type="quality" timestamp="2025-06-10 12:18:52 +0200">
+			<result outcome="success" type="quality" timestamp="2025-06-12 11:21:39 +0200">
 			</result>
 		</query>
 	</queries>

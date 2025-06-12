@@ -22,9 +22,8 @@ you can also look at the last part of [[Session 6 Timed model]]
 ![[Pasted image 20250606101049.png]]
 
 
-there must be a mistake in this somewhere. Either the human doesnt simulate properly or whatever they are asking is literally impossible, because it can take the bad transition whenever.
+So to get it to work we changed pub to a broadcast channel because it needed to tell the timeout and the machine that it has been shown.
 
-Teacher forgot to upload a solution to moodle. He literally mentions it and there is nothing for us to look at.
 
 # Exercise 3
 ![[Pasted image 20250606101103.png]]
@@ -38,7 +37,7 @@ Validation Properties:
 - All succeed
 
 Safety Properties:
-1. idk
+1. Something bad CAN happen. IE they can try to go both at the same time. 
 2. Passes
 
 Liveness Properties:
@@ -52,7 +51,13 @@ Deadlock:
 
 
 
-fuck this teacher is BAD at explaining and making exercises. A lot of people have no fucking clue what is going on, and there is no actual solution we can look at.
+B)
+So whats going on here are 2 issues in the gate. in the code it pretends that we are 1 indexed, when in reality it is 0 indexed. So changing it from a 1 to a zero fixed it.
+
+The other issue is that a transition can get stuck in the stop node (see image) if the stop node isnt urgent or committed. Since theoretically it is allowed to stay forever, ie allowing it to just straight up crash into the other train.
+![[Pasted image 20250611145441.png]]
+
+
 # Exercise 4
 ![[Pasted image 20250606101122.png]]
 
