@@ -64,6 +64,7 @@ The formula is not an inductive invariant. As a counterexample, the state (1, 0,
 φ and has a transition to the state (2, 0, 1), which does not satisfy φ.
 ![[Pasted image 20250611161444.png]]
 
+
 ===c)===
 if (z == 0 and x == y) or (z == 1 and x == y + 1): 
 
