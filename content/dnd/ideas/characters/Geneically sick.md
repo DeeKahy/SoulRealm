@@ -1,0 +1,1 @@
+ Generically sick person that thinks his sickness can be spread, so he is acting more and more irrationally about needing to wear masks, even pushing people to wear masks. he constantly coughs or something. he gets visibly anxious if you **dont** wear a mask around him.
