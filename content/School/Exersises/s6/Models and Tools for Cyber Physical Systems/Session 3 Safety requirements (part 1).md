@@ -56,7 +56,7 @@ This is a liveness property (and not a safety property and hence not an invarian
 ![[Pasted image 20250604165600.png]]
 
 a)
-Yes because the property $x = y ∨ x = y + 1$ hold at every state in every execution except for the first one, where 0 cannot be 0 + 1. For some reason this is the case even though it breaks every second state.
+No because the property $x = y ∨ x = y + 1$ hold at every state in every execution except for the first one, where 0 cannot be 0 + 1. For some reason this is the case even though it breaks every second state.
 
 
 b)

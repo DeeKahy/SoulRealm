@@ -38,7 +38,7 @@ fn main() {
     let t0 = 0.0;
     let x0 = vec![100.0, 0.0]; // Initial condition x(0) = 0
     let h = 0.5;
-    let n = 100;
+    let n = 1000;
 
     let (t, result) = runge_kutta_4(f, &x0, t0, h, n);
 
@@ -111,7 +111,7 @@ let f = |x: &[f64], t: f64| -> Vec<f64> {
     let t0 = 0.0;
     let x0 = vec![100.0, 0.0]; // Initial condition x(0) = 0
     let h = 0.5;
-    let n = 100;
+    let n = 1000;
 
     let (t, result) = runge_kutta_4(f, &x0, t0, h, n);
 
