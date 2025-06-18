@@ -13,9 +13,15 @@
 - **Security Mechanisms**: Concrete implementations (access control, encryption)
 
 ## **Risk Management**
-- **Risk Assessment**: Difficulty vs Impact matrix
-- **Prioritization**: Address high-impact, easy-to-exploit vulnerabilities first
-- **Context Matters**: Security needs vary by system and environment
+Risk management involves understanding tradeoffs:
+- **Example**: Home design balances aesthetics (windows at eye level) vs. security (higher windows or none)
+
+Most systems initially prioritize functionality over security:
+- Development often focuses on demonstrating working prototypes
+- Security considerations are frequently deferred, leading to vulnerabilities
+
+is it worth throwing money at fuzzing, at tain analysis, at testing.
+
 
 ## **Key Insight**
 Security is **context-dependent** - what's secure for a coffee machine differs from hospital systems. Always define: secure **for whom**, **against what**, **for how long**, and **why**.
