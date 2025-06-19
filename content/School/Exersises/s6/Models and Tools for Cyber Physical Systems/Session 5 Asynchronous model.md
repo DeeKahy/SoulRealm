@@ -20,6 +20,10 @@ Then the output task is enabled since x is no longer empty. It takes x and remov
 ## Exercise 2
 ![[Pasted image 20250605101506.png]]
 
+Answer
+![[Pasted image 20250613095913.png]]
+
+![[Pasted image 20250613095924.png]]
 
 
 

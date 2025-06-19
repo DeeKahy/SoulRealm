@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.6//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+</declaration>
+	<template>
+		<name x="5" y="5">Yes</name>
+		<declaration>// Place local declarations here.
+clock x;
+clock y;
+
+
+clock time;
+</declaration>
+		<location id="id0" x="-110" y="25">
+			<name x="-120" y="-9">A</name>
+			<label kind="invariant" x="-120" y="42">y &lt;=3</label>
+		</location>
+		<location id="id1" x="25" y="25">
+			<name x="15" y="-9">B</name>
+			<label kind="invariant" x="15" y="42">x &lt;=6</label>
+		</location>
+		<location id="id2" x="187" y="-68">
+			<name x="170" y="-93">D</name>
+		</location>
+		<location id="id3" x="323" y="25">
+			<name x="313" y="-9">E</name>
+		</location>
+		<location id="id4" x="255" y="93">
+			<name x="245" y="59">F</name>
+		</location>
+		<location id="id5" x="153" y="25">
+			<name x="143" y="-9">C</name>
+			<label kind="invariant" x="136" y="42">y&lt;=5</label>
+		</location>
+		<init ref="id0"/>
+		<transition id="id6">
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="guard" x="153" y="76">x &gt;=6000</label>
+		</transition>
+		<transition id="id7">
+			<source ref="id3"/>
+			<target ref="id5"/>
+			<label kind="assignment" x="221" y="-34">y := 0</label>
+			<nail x="229" y="-8"/>
+		</transition>
+		<transition id="id8">
+			<source ref="id5"/>
+			<target ref="id3"/>
+			<label kind="guard" x="212" y="25">y &lt;=4</label>
+		</transition>
+		<transition id="id9">
+			<source ref="id5"/>
+			<target ref="id2"/>
+			<label kind="guard" x="136" y="-59">x&lt;=1</label>
+		</transition>
+		<transition id="id10">
+			<source ref="id1"/>
+			<target ref="id5"/>
+			<label kind="guard" x="43" y="-9">x&gt;= 4 &amp;&amp; y &lt;= 3</label>
+		</transition>
+		<transition id="id11">
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="guard" x="-76" y="0">y &gt;= 1</label>
+			<label kind="assignment" x="-76" y="25">y := 0</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+
+// List one or more processes to be composed into a system.
+system Yes;
+
+</system>
+	<queries>
+		<query>
+			<formula>E&lt;&gt; Yes.D</formula>
+			<comment/>
+			<option key="--diagnostic" value="2"/>
+			<result outcome="failure" type="quality" timestamp="2025-06-16 10:10:33 +0200">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>E&lt;&gt; Yes.E</formula>
+			<comment/>
+			<option key="--diagnostic" value="2"/>
+			<result outcome="success" type="quality" timestamp="2025-06-16 10:11:04 +0200">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+		<query>
+			<formula>E&lt;&gt; Yes.F</formula>
+			<comment/>
+			<option key="--diagnostic" value="2"/>
+			<result outcome="success" type="quality" timestamp="2025-06-16 10:11:27 +0200">
+				<option key="--diagnostic" value="2"/>
+			</result>
+		</query>
+	</queries>
+</nta>
