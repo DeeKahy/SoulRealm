@@ -225,7 +225,7 @@ port 81 and port 80 (http) are not the same.
 
 port 443 (https) and http (80) are not the same.
 
-
+  
 Security is fun when you make sure you do stuff properly
 - the user is the enemy
 - sanitise your data
@@ -245,7 +245,7 @@ Self-tweeting tweet. tweet deck read text as if it should be executed.
 - **4xx (Client Error)**: The request contains bad syntax or cannot be fulfilled. 
 - **5xx (Server Error)**: The server failed to fulfill an apparently valid request.
 
-
+ 
 # Fuzzing
 ## What is Fuzzing?
 Fuzzing is an automated testing technique that involves feeding invalid, unexpected, or random data as inputs to a program to discover bugs, crashes, and security vulnerabilities. The goal is to make the program behave unexpectedly or crash, which indicates potential security issues or bugs.

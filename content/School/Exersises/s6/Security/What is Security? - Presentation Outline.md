@@ -42,12 +42,15 @@ Difficult    ✓      |    ✓    |   ✓
 - **Tradeoff Example**: Home design balances aesthetics (windows at eye level) vs. security (higher windows or bars)
 - **Development Reality**: Most systems initially prioritize functionality over security - prototypes focus on "does it work?" not "is it secure?"
 - **Investment Questions**: Is it worth spending on fuzzing, taint analysis, penetration testing? Depends on your adversary model and asset value.
+**Seven Touchpoints**
+
+**Knowledge**
+
+
 
 ## **Security as an afterthought**
--  Security has always been a lower priority.
-- if you are trying to get something out of the door you often forgetti about the security aspects
-
-
+- Security has always been a lower priority.
+- If you are trying to get something out of the door you often forgetti about the security aspects
 
 ## **Context is Everything**
 Security is **context-dependent** - what's secure for a coffee machine differs drastically from hospital life-support systems. Always define: secure **for whom** (stakeholders), **against what** (specific threats), **for how long** (threat evolution), and **why** (business justification).
