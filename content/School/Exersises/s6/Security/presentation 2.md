@@ -63,5 +63,5 @@ Difficult ✓     ✓        ✓
 3. What are we going to do about it?
 4. Did we do a good enough job?
 
-**Remember**: Security isn't binary - it's about **managing risk within acceptable levels** for your specific context and adversary model .
+**Remember**: Security isn't binary - it's about **managing risk within acceptable levels** for your specific context and adversary model.
 
