@@ -138,6 +138,20 @@ There are 9 exam topics, which approximately correspond to the 13 lectures.
 
     A: Greedy algorithms: general principles and an example algorithm.
 
+Greedy algorithms do not always yield optimal solutions, but for many problems they do.
+
+
+
+- _- What is the general structure of a greedy optimization algorithm?   
+    - Which two properties have to be proven to prove that a greedy algorithm finds an optimal solution?   
+    - What is the greedy-choice property?   
+    
+    - What is the greedy choice in the Huffman algorithm? **At each step, always select and merge the two nodes with the lowest frequencies.**
+![[Pasted image 20250428091721.png]]
+
+
+
+
     A: Dynamic programming: general principles and an example algorithm.
 
     A: Network flow: definitions, Ford-Fulkerson method, and Edmonds-Karp algorithm.
