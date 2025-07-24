@@ -120,8 +120,30 @@ React: out := x; x := in
 
 - Safety requirements (Part 1, Chapter 3)  related too maybe [[Temporal Logic and Set-Builder Notation Reference]]
 
-- Asynchronous model (Part 1, Chapter 4)  
+- Asynchronous model (Part 1, Chapter 4) 
+
 - ***Timed model** (Part 2, Chapter 7)  
+- Timed processes
+- Buffers with bounded delays
+- Multiple clocks
+- Composition
+- Timed-based protocols
+- Timed automata
+- Zone-based symbolic analysis
+
+
+
+
+timed model of computation where processes are not tightly synchronized to execute in a sequence of rounds but rely on the global physical time to achieve a loose form of synchronization
+![[Pasted image 20250723192034.png]]
+
+
+
+
+
+
+
+
 - Real-time scheduling (Part 2, Chapter 8)  
 - ***Continuous model** (Part 3, Chapter 6)  [[Session 10 Continuous Systems part 1]] and part 2
 - Hybrid model (Part 3, Chapter 9)  
@@ -148,7 +170,6 @@ Greedy algorithms do not always yield optimal solutions, but for many problems t
     
     - What is the greedy choice in the Huffman algorithm? **At each step, always select and merge the two nodes with the lowest frequencies.**
 ![[Pasted image 20250428091721.png]]
-
 
 
 
