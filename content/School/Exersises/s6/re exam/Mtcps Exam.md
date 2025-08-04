@@ -8,6 +8,7 @@ The synchronous model is a **discrete and synchronous model of reactive computat
 3. Updates internal state
 
 ![[Pasted image 20250804095200.png]]
+![[Pasted image 20250804104704.png]]
 
 ### Notes from reading
 A functional component produces outputs when supplied with inputs, and its behavior can be mathematically described using a mapping between input and output values. A reactive component, in contrast, maintains an internal state and interacts with other components via inputs and outputs in an ongoing manner.
