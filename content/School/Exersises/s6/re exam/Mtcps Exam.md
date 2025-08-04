@@ -1,3 +1,74 @@
+## ***Synchronous model** (Part 1, Chapter 2)  
+
+A functional component produces outputs when supplied with inputs, and its behavior can be mathematically described using a mapping between input and output values. A reactive component, in contrast, maintains an internal state and interacts with other components via inputs and outputs in an ongoing manner.
+
+![[Pasted image 20250804091027.png]]
+This model basically returns 0 on the first run, and then on each subsiquent run it returns what the previous run put in.
+
+![[Pasted image 20250804091816.png]]
+
+#### Initialization
+![[Pasted image 20250804092035.png]]
+In this modified version, choose may return either 0 or 1; as a result, the initial value of the variable x may be either 0 or 1. Another example of initialization using the choose construct is the declaration.
+![[Pasted image 20250804092150.png]]
+This means that the variable x is real-valued, and its initial value can be any real number between 0 and 2.
+
+
+
+
+
+
+
+
+
+## Safety requirements (Part 1, Chapter 3)  
+
+
+
+## Asynchronous model (Part 1, Chapter 4)  
+
+
+
+## ***Timed model** (Part 2, Chapter 7)  
+
+
+
+## Real-time scheduling (Part 2, Chapter 8)  
+
+
+
+## ***Continuous model** (Part 3, Chapter 6)  
+
+
+
+## Hybrid model (Part 3, Chapter 9)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # MTCPS
 The re-exam will be **oral** and across **all topics of the course**. You do not have to prepare a presentation.  
@@ -118,11 +189,13 @@ React: out := x; x := in
 
 
 
-- Safety requirements (Part 1, Chapter 3)  related too maybe [[Temporal Logic and Set-Builder Notation Reference]]
+# Safety requirements 
 
-- Asynchronous model (Part 1, Chapter 4) 
+(Part 1, Chapter 3)  related too maybe [[Temporal Logic and Set-Builder Notation Reference]]
 
-- ***Timed model** (Part 2, Chapter 7)  
+# Asynchronous model (Part 1, Chapter 4) 
+
+# ***Timed model** (Part 2, Chapter 7)  
 - Timed processes
 - Buffers with bounded delays
 - Multiple clocks
@@ -146,67 +219,11 @@ timed model of computation where processes are not tightly synchronized to execu
 
 - Real-time scheduling (Part 2, Chapter 8)  
 - ***Continuous model** (Part 3, Chapter 6)  [[Session 10 Continuous Systems part 1]] and part 2
+A Continues model is basically where it uses the previous output as its own input to approximate a closer/better result.
+
+
 - Hybrid model (Part 3, Chapter 9)  
 
 
 
 
-# AC
-
-The re-exam will be oral.  
-  
-
-There are 9 exam topics, which approximately correspond to the 13 lectures.
-
-    A: Greedy algorithms: general principles and an example algorithm.
-
-Greedy algorithms do not always yield optimal solutions, but for many problems they do.
-
-
-
-- _- What is the general structure of a greedy optimization algorithm?   
-    - Which two properties have to be proven to prove that a greedy algorithm finds an optimal solution?   
-    - What is the greedy-choice property?   
-    
-    - What is the greedy choice in the Huffman algorithm? **At each step, always select and merge the two nodes with the lowest frequencies.**
-![[Pasted image 20250428091721.png]]
-
-
-
-    A: Dynamic programming: general principles and an example algorithm.
-
-    A: Network flow: definitions, Ford-Fulkerson method, and Edmonds-Karp algorithm.
-
-    A: External-memory algorithms: general principles and the multiway merge-sort algorithm.
-
-    A: Parallel algorithms: general principles and the parallel merge-sort algorithm.
-
-    A: Amortized analysis: general principles, different methods, and the analysis of the dynamic table.
-
-  
-
-    C: Formal languages; deterministic, multi-tape, and nondeterministic Turing machines; Church-Turing thesis; halting problem and why it is not computable; closure properties.
-
-    C: Computable and computably-enumerable languages; (mapping) reductions and how to use them to prove computability properties about languages; example reduction between halting problem and acceptance problem; Rice's theorem.
-
-    C: Classes P and NP; closure properties; "P vs. NP" problem; polynomial-time reductions and how to use them to prove complexity properties about languages; NP-hardness and NP-completeness.   (Note that this list does **not** include the proof that SAT is NP-complete.)
-
-  
-
-First, you randomly select 2 (one A topic and one C topic) out of the exam topics. Then, you choose one topic as the primary topic and the other one as the secondary topic.
-
-For the primary topic, you may give a 4-minute presentation to cover **basic concepts** (e.g., definitions) and **general principles** (e.g., algorithms) of the topic, and also a **concrete example** that explains how the general principles are used in the example.  You are expected to have prepared for all the topics before the exam, and there will be no separate preparation time once a topic has been selected. The presentation will be supplemented by questions from the examiners (ca. another 4 minutes). The presentation will not have slides, but you are allowed to use the blackboard/whiteboard. As material for the presentation, you are allowed to have a sheet with notes (maximum 1 page per topic). It is recommended that you have a list of items that you want to talk about, but be aware to not only read from your notes.
-
-Then, the examiners will ask questions from the secondary topic (another 6 minutes).
-
-Note that both topics are weighted equally and that there will be more questions about the secondary topic. So make sure to prepare well for both parts of the course.
-
-  
-
-To prepare yourself for the re-exam, we suggest that you:
-
-Prepare a presentation for each topic that uses a **concrete example** to explain both **basic concepts** (e.g., definitions) and **general principles** (e.g., algorithms). Rehearse all presentation topics before the exam.
-
-Go through the lecture slides (some of the questions will relate to the basic concepts presented in the slides).
-
-Go through the exercises (some of the questions will relate to how you would address some of those exercises).
