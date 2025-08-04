@@ -15,8 +15,7 @@ This means that the variable x is real-valued, and its initial value can be any 
 
 
 
-
-
+#### Extended state machines and Mealy machines
 
 
 
