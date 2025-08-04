@@ -5,6 +5,8 @@ The synchronous model is a **discrete and synchronous model of reactive computat
 2. Based on current state and inputs, computes outputs
 3. Updates internal state
 
+![[Pasted image 20250804095200.png]]
+
 ### Notes from reading
 A functional component produces outputs when supplied with inputs, and its behavior can be mathematically described using a mapping between input and output values. A reactive component, in contrast, maintains an internal state and interacts with other components via inputs and outputs in an ongoing manner.
 
@@ -18,6 +20,7 @@ This model basically returns 0 on the first run, and then on each subsiquent run
 In this modified version, choose may return either 0 or 1; as a result, the initial value of the variable x may be either 0 or 1. Another example of initialization using the choose construct is the declaration.
 ![[Pasted image 20250804092150.png]]
 This means that the variable x is real-valued, and its initial value can be any real number between 0 and 2.
+
 
 
 
