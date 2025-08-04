@@ -1,5 +1,11 @@
-## ***Synchronous model** (Part 1, Chapter 2)  
+## ***Synchronous model** (Part 1, Chapter 2) 
+TLDR:
+The synchronous model is a **discrete and synchronous model of reactive computation** where all components execute in a sequence of rounds. In each round, a reactive component:
+1. Reads its inputs
+2. Based on current state and inputs, computes outputs
+3. Updates internal state
 
+### Notes from reading
 A functional component produces outputs when supplied with inputs, and its behavior can be mathematically described using a mapping between input and output values. A reactive component, in contrast, maintains an internal state and interacts with other components via inputs and outputs in an ongoing manner.
 
 ![[Pasted image 20250804091027.png]]
