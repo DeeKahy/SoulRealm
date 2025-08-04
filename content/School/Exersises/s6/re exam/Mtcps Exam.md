@@ -1,3 +1,5 @@
+![[Pasted image 20250804100403.png]]
+
 ## ***Synchronous model** (Part 1, Chapter 2) 
 TLDR:
 The synchronous model is a **discrete and synchronous model of reactive computation** where all components execute in a sequence of rounds. In each round, a reactive component:
