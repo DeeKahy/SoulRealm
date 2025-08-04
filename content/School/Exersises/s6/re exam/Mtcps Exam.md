@@ -10,6 +10,16 @@ The synchronous model is a **discrete and synchronous model of reactive computat
 ![[Pasted image 20250804095200.png]]
 ![[Pasted image 20250804104704.png]]
 
+Termonology:
+- A Component = The entire box seen above.
+	- Initialization = Top part of a Component
+	- A Reaction ( React ) = A theoretical run scenario. example( 0 -- 1/0 --> 1 ) 
+	- Reaction Description = Essentially the code in the bottom box.
+		- Assignment Statement = `x := e`
+		- Conditional Statement = `if b then stmt1 else stmt2`
+		- Auxiliary Variables = Local temporary variables that are NOT states.
+- 
+
 ### Notes from reading
 A functional component produces outputs when supplied with inputs, and its behavior can be mathematically described using a mapping between input and output values. A reactive component, in contrast, maintains an internal state and interacts with other components via inputs and outputs in an ongoing manner.
 
