@@ -18,7 +18,11 @@ Termonology:
 		- Assignment Statement = `x := e`
 		- Conditional Statement = `if b then stmt1 else stmt2`
 		- Auxiliary Variables = Local temporary variables that are NOT states.
-- 
+- Execution = the picture below
+![[Pasted image 20250804124221.png]]
+- t
+
+
 
 ### Notes from reading
 A functional component produces outputs when supplied with inputs, and its behavior can be mathematically described using a mapping between input and output values. A reactive component, in contrast, maintains an internal state and interacts with other components via inputs and outputs in an ongoing manner.
