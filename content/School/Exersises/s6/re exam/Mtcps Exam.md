@@ -10,6 +10,39 @@ The synchronous model is a **discrete and synchronous model of reactive computat
 ![[Pasted image 20250804095200.png]]
 ![[Pasted image 20250804104704.png]]
 
+Mealie Machine example:
+Here is an "algorithm" for making a mealie machine:  
+1. Answer the following questions:  
+- What is the set of states?  
+- What are the inputs?  
+- What are the outputs?  
+- What is the initial state?  
+  
+2. With the answers to these questions, you create an automaton like this:  
+- Each state gets a node.  
+- Mark the initial state.  
+- For each state s that can transition to a state t in one step, add an edge s -> t.  
+- For each edge, write all possible input/output pairs corresponding to that transition.  
+  
+Now let's try it.  
+  
+1.  
+- There are two Boolean state variables, so the set of states is {(0,0), (0,1), (1,0), (1,1)}.  
+- I presume there is a single input in (not visible).  
+- I presume there is a single output out (not visible).  
+- The initial state is (0,0).  
+  
+2.  
+- We draw four nodes.  
+- Node (0,0) gets marked as initial.  
+- I will not go through all edges. In each state, we can have two possible inputs (0 or 1), and the component is deterministic; so there should be two transitions from each state (i.e., 8 in total). The transitions from the initial state are (0,0) --0/0--> (0,1) and (0,0) --1/0--> (1,1).
+![[Pasted image 20250806104900.png]]
+
+
+#### Event triggered Component
+![[Pasted image 20250806111251.png]]
+
+
 Termonology:
 - A Component = The entire box seen above.
 	- Initialization = Top part of a Component
@@ -19,8 +52,17 @@ Termonology:
 		- Conditional Statement = `if b then stmt1 else stmt2`
 		- Auxiliary Variables = Local temporary variables that are NOT states.
 - Execution = the picture below
+![[Pasted image 20250804130541.png]]
 ![[Pasted image 20250804124221.png]]
-- t
+where
+![[Pasted image 20250804130407.png]]
+- Combinational component = the picture below
+![[Pasted image 20250804144807.png]]
+![[Pasted image 20250804144736.png]]
+- stuttering reaction = If the input is absent in a round, then the componentispassive: theoutputisabsent, andthestatestaysunchanged. Such a reaction is called a stuttering reaction.
+- latched = if there exists a state variable x such that in every reaction of the component, the value of the output variable y is the updated value of the state variable.
+
+
 
 
 
@@ -54,16 +96,15 @@ This means that the variable x is real-valued, and its initial value can be any 
 
 
 
-## ***Timed model** (Part 2, Chapter 7)  
 
+
+## ***Timed model** (Part 2, Chapter 7)  
 
 
 ## Real-time scheduling (Part 2, Chapter 8)  
 
 
-
 ## ***Continuous model** (Part 3, Chapter 6)  
-
 
 
 ## Hybrid model (Part 3, Chapter 9)
