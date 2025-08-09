@@ -148,7 +148,7 @@ PID = a **proportional** term capturing the reaction to the current error, an **
 
 
 - What is the interplay between stability and control?
-
+	- **Trade-offs**: Control gains (e.g., in PID terms) must balance responsiveness (quick error correction) with stability—high gains might cause overshoot or instability, while low gains ensure stability but slow response.
 
 
 
