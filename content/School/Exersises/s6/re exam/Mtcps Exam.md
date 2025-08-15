@@ -3,6 +3,7 @@ todo:
 - Derive pid (more training)
 - Linear model (being able to make one)
 - Have an example of stability for explaining the concept of stability
+- Understand cruise controller
 
 
 
