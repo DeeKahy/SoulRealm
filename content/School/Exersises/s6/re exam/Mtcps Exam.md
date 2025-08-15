@@ -1,3 +1,11 @@
+todo:
+- hybrid models
+- Derive pid (more training)
+- Linear model (being able to make one)
+- Have an example of stability for explaining the concept of stability
+
+
+
 ![[Pasted image 20250804100403.png]]
 
 ## ***Synchronous model** (Part 1, Chapter 2) 

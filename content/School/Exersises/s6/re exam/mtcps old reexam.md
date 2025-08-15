@@ -153,7 +153,7 @@ timed model of computation where processes are not tightly synchronized to execu
 A Continues model is basically where it uses the previous output as its own input to approximate a closer/better result.
 
 
-- Hybrid model (Part 3, Chapter 9)  
+# Hybrid model (Part 3, Chapter 9)  
 
 
 
