@@ -69,4 +69,4 @@
      ```
      dp = [0, 1, 1, 2, 3, 5]  
      ```  
-   - *"DP reduces time from exponential ($O(2^n)$) to linear ($O(n)$)."*  
+   - *"DP reduces time from exponential ($O(2^n)$) to linear ($O(n)$)."* 
