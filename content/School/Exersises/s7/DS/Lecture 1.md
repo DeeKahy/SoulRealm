@@ -16,8 +16,8 @@ Forskernet (mosty standardized ish modems communicating with each other and the 
 
 #### What is the main disadvantage of distributed systems which exploit the infrastructure offered by the Internet? How can this be overcome?
 
-Syncronozation
-google serivce shutdown issue
+Synchronisation
+google service shutdown issue
 Setup error
 
 
