@@ -1,9 +1,10 @@
 § 1 - Meeting 
-- Work starts at 09:00 in our group room at the LATEST when working in-person.
-- Status meetings every Monday and Thursday. Don’t make personal plans for these days if you can avoid it. 
-- Plan meetings w/ counselor for one of these days
-- Tuesday, Wednesday, and Friday are attendance optional, but welcome. 
+- Work starts at 09:05 in our group room at the LATEST when working in-person.
+- Status meetings every x and x. Don’t make personal plans for these days if you can avoid it.*
+- Plan meetings w/ counselor for one of these days*
+- Tuesday, Wednesday, and Friday are attendance optional, but welcome. *
 - Weekends are weekends (unless shit is burning, and we need to put it out). 
+- No incredibly stinky food.
 
 
 § 2 - Illness & absence
