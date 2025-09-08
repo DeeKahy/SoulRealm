@@ -38,7 +38,7 @@ Sources: Vancouver method, Organized manually.
 - Statusseminar person: Martin
 - Note taker: Kris
 - Github Projects/calendar organizer: Diego
-- Github organizers: Diego 
+- Github organizers: Diego, Martin
 
 
 § 7 - Disagreements
