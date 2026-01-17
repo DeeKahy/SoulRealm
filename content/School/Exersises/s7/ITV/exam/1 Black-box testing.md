@@ -1,158 +1,60 @@
-Based on the lecture content and the exam format, here's how I would structure your **Black-box Testing (Chapter 2)** note sheet:
+**Black-box testing** evaluates a system based only on its specification, without access to the internal implementation (the "black box"). The goal is to find discrepancies between the specification and the actual behavior.
+**Key Concepts:** **Test Case:** An (input, expected output) pair. **Test Oracle:** The mechanism that determines the expected output for a test. **Input Domain:** The set of all possible inputs to the program.
+### **2. The Four Main Methods**
+Systematically explore the input domain using these strategies:
+1.  **Special-Value Testing:** Manual selection of "interesting" inputs using domain knowledge.
+    - *Example:* Testing the last day of February for leap years.
+2.  **Random Testing / Fuzzing:** Automatic generation of random inputs.
+    - *Pro:* Automatic, unbiased. *Con:* Needs an oracle, can be expensive.
 
----
+3.  **Boundary-Value Analysis:** Tests at the edges of input domains (min, min+1, nominal, max-1, max).
+    - *Systematic:* Catches typical "off-by-one" faults.
+    - *Single-Fault Assumption:* 4n+1 test cases for n inputs.
 
-## **SIDE 1 (Front): Presentation Flow**
+4.  **Equivalence-Class Testing:** Partition the input domain into classes where inputs are expected to be treated identically; test one representative per class.
+    - *Weak Testing:* One value per class.
+    - *Strong Testing:* Cartesian product of all classes.
 
-### **Header**
+### **3. Illustrated Example: `NextDate` Function**
+Function: `NextDate(day, month, year)` → next calendar date.
 
-**Black-box testing (Ch. 2)** | Test based on specification only, no code access  
-**Key terms:** test oracle, input domain, equivalence class, boundary value
+**Applying the methods:**
+- **Special-Value:** `[(28,2,2023) → (1,3,2023)]` (non-leap year roll).
+- **Equivalence Classes:**
+    - Day (D): {1-27}, {28}, {29}, {30}, {31}
+    - Month (M): {30-day}, {31-day}, {December}, {February}
+    - Year (Y): {leap}, {common}, {1900}, {2000}
+- **Test Counts:**
+    - **Weak:** 5 test cases (one per day class).
+    - **Strong:** 5 × 4 × 4 = **80** test cases (exhaustive combination).
+    - This is far fewer than exhaustive input testing (31 * 12 * years).
 
-### **Three Columns:**
+**Presentation Flow:** Define → List 4 methods → Use `NextDate` to show Equivalence-Class → Conclude with test count efficiency.
 
-#### **Column 1: CORE CONCEPTS**
+### **Formal Definitions & Formulas** Side 2 (BACK)
+- **Equivalence Relation `R`** (partitions input domain `S`):
+    - Reflexive: ∀x∈S: (x,x)∈R
+    - Symmetric: (x,y)∈R → (y,x)∈R
+    - Transitive: (x,y)∈R ∧ (y,z)∈R → (x,z)∈R
+- **Equivalence Class of x:** {y | (x,y) ∈ R}.
 
-- **Definition**: Testing without access to implementation
-- **Test case** = (input, expected output)
-- **Test oracle**: determines expected output
-- **Input domain**: all possible inputs
-- **4 main methods**:
-    1. Special-value
-    2. Random/Fuzzing
-    3. Boundary-value
-    4. Equivalence-class
+- **Boundary-Value Test Case Counts** for `n` inputs:
+    - **Single-Fault (4n+1):** Assumes a fault relates to only one variable at a time.
+    - **Worst-Case (5ⁿ):** Tests all combinations of min, min+1, nom, max-1, max.
+    - **Robust:** Adds out-of-boundary values (min-1, max+1) → 6n+1 or 7ⁿ cases.
+### **Method Comparison & When to Apply**
+| Method | Effort to Write | Effort to Execute | Automatic? | Best For... |
+| :--- | :--- | :--- | :--- | :--- |
+| **Special-Value** | Moderate (needs knowledge) | Cheap | ✗ | **Always useful;** targeted, relevant tests. |
+| **Random** | Cheap | Expensive (many runs) | ✓ | **Supplement;** broad, unbiased exploration. |
+| **Boundary-Value** | Cheap | Moderate | ✓ (if boundaries known) | **Systematic** finding of "off-by-one" faults. |
+| **Equivalence-Class** | Moderate (needs good relation) | Moderate | Partial | **Completeness;** avoiding redundancy. |
+### **Discussion Points & Connections**
+- **The Test Oracle Problem:** Automatic testing requires an oracle. A common compromise is "no crash" testing. **Metamorphic Testing** is a solution: test known *relationships* between outputs (e.g., `sin(x) ≈ sin(x + 2π)`).
+==- **Why not test everything?** The input domain is often infinite or impractically large. These methods provide systematic, finite coverage.==
+- **Pros of Black-Box:** Almost always applicable, helps understand the specification, finds typical specification-implementation mismatches.
+- **Cons:** Cannot find code-specific bugs (e.g., missing logic paths), effectiveness depends on specification quality.
+- **Real-World Tip:** **Combine methods.** Use special-value for critical cases, then one systematic method (boundary or equivalence-class) for coverage.
+- **Connects to White-Box (Ch. 3-4):** Black-box tests are derived from specs; white-box tests are derived from code structure. They are complementary.
 
-#### **Column 2: KEY TECHNIQUES**
 
-**Special-value testing:**
-
-- Manual selection using domain knowledge
-- Pick "interesting" inputs
-
-**Random testing:**
-
-- Generate random inputs
-- Pro: automatic, unbiased
-- Con: expensive, needs test oracle
-
-**Boundary-value:**
-
-- Test: min, min+1, nominal, max-1, max
-- Robust: add min-1, max+1
-- Single-fault (4n+1) vs worst-case (5ⁿ)
-
-**Equivalence-class:**
-
-- Partition inputs into classes
-- Test one representative per class
-- Weak vs strong (Cartesian product)
-
-#### **Column 3: EXAMPLE - NextDate**
-
-```
-NextDate(d, m, y) → next day's date
-
-Special-value test:
-[(28,2,2023) → (1,3,2023)]  // non-leap
-[(28,2,2020) → (29,2,2020)] // leap
-[(31,12,2023) → (1,1,2024)] // year wrap
-
-Equivalence classes:
-D: {1-27}, {28}, {29}, {30}, {31}
-M: {30-day}, {31-day}, {Dec}, {Feb}
-Y: {leap}, {common}, {1900}, {2000}
-
-Weak: 5 test cases
-Strong: 5×4×4 = 80 test cases
-```
-
-### **Bottom Strip:**
-
-**When to use:** Special-value (always) | Random (supplement) | Boundary (systematic) | Equiv-class (completeness)  
-**Connects to:** Ch. 3-4 (white-box), Ch. 1 (test basics)
-
----
-
-## **SIDE 2 (Back): Deep Reference**
-
-### **Top-Left: FORMAL DEFINITIONS**
-
-**Equivalence relation R:**
-
-- Reflexive: ∀x: (x,x) ∈ R
-- Symmetric: (x,y) ∈ R → (y,x) ∈ R
-- Transitive: (x,y),(y,z) ∈ R → (x,z) ∈ R
-
-**Equivalence class:** {y | (x,y) ∈ R}
-
-**Test case counts:**
-
-- Boundary single-fault: 4n+1
-- Boundary worst-case: 5ⁿ
-- Robust: 6n+1 / 7ⁿ
-
-### **Top-Right: ADVANCED EXAMPLE**
-
-**NextDate - Leap year rule:**
-
-```julia
-IsLeapYear(y) = 
-  y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)
-```
-
-**Edge cases to test:**
-
-- 2000: divisible by 400 → leap
-- 1900: divisible by 100, not 400 → common
-- 2020: divisible by 4, not 100 → leap
-- 2023: not divisible by 4 → common
-
-### **Bottom-Left: COMPARISON TABLE**
-
-|Method|Writing|Execution|Automatic|Coverage|
-|---|---|---|---|---|
-|Special-value|Manual|Cheap|✗|Targeted|
-|Random|Cheap|Expensive|✓|Broad|
-|Boundary|Cheap|Moderate|✓|Systematic|
-|Equiv-class|Moderate|Moderate|Partial|Complete|
-
-**Combinations:**
-
-- Boundary + Random: random nominal values
-- Equiv-class + Random: sample from classes
-- Edge testing = Boundary + Equiv-class
-
-### **Bottom-Right: DISCUSSION POINTS**
-
-**Common questions:**
-
-- "Why not just test everything?" → infinite inputs
-- "How choose equivalence classes?" → domain knowledge + spec
-- "Test oracle problem?" → metamorphic testing (relationships)
-
-**Pros:** Almost always applicable, finds typical faults  
-**Cons:** Misses code-specific bugs, needs specification
-
-**Metamorphic testing:** Test relationships between inputs  
-Example: f(x) ≥ f(y) if x ≥ y (monotonic)
-
-**Real-world tip:** Combine methods! Use special-value + random + one systematic method
-
-**Limitations:**
-
-- No guarantee to find all bugs
-- Quality depends on specification quality
-- Cannot test what spec doesn't specify
-
----
-
-## **Tips for using this sheet:**
-
-1. **During 4-min presentation:** Focus on SIDE 1, use the example to illustrate
-2. **During discussion:** Flip to SIDE 2 for definitions and comparison table
-3. **Practice path:** Start with definition → show 4 methods → NextDate example → when to use each
-4. **If asked about theory:** Use formal definitions (top-left, back)
-5. **If asked to compare:** Use comparison table (bottom-left, back)
-
-The structure follows your exam format: concise presentation material on front, detailed reference material on back. Good luck!

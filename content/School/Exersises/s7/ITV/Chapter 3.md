@@ -12,7 +12,7 @@ branches are important to test (all avenues of your if statement), and you can d
 
 ==why do we care about code coverage? ==
 
-
+![[Pasted image 20260108132309.png]]
 
 
 
