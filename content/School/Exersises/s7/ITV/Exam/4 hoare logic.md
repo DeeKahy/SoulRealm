@@ -1,79 +1,67 @@
-# Hoare Logic & Hoare Calculus – Exam Notes (Two-Sided A4)
+Hoare logic: formal system to **prove** program correctness instead of testing.
 
-## 1. Hoare Triple: Definition & Meaning
-- Notation: `{P} S {Q}`
-- **Meaning**: If we start in a state where the precondition `P` holds, and execute statement `S`, then if `S` terminates, we end in a state where the postcondition `Q` holds.
-- **Key point**: Validation is done *logically*, not by running the program. We reason backwards from the postcondition.
+**Hoare Triple**: $\{φ\}C\{ψ\}$ — "If precondition $φ$ holds and $C$ terminates, then postcondition $ψ$ holds"
 
-## 2. Validating a Hoare Triple (Assignment Example)
-For an assignment `x = e`, we use the **assignment rule** backwards:
-- Rule: `{Q[x/e]} x = e {Q}`
-- To validate `{P} x = e {Q}`, we check if `P ⇒ Q[x/e]`.
+### 2. Validity (45 sec)
+| Triple                     | Valid? | Why?                                           |
+| -------------------------- | ------ | ---------------------------------------------- |
+| $\{⊤\}$ `i+=1` $\{⊤\}$     | ✓      | True always holds                              |
+| $\{⊥\}$ `i+=1` $\{⊥\}$     | ✓      | Precondition never satisfied → trivially valid |
+| $\{i<n\}$ `i+=1` $\{i≤n\}$ | ✓      | $i<n$ then $i+1≤n$ ✓                           |
+| $\{i<n\}$ `i+=1` $\{i<n\}$ | ✗      | Counterexample: $i=1,n=2$                      |
 
-**Example**: `{x = 0} x = x + 1 {x > 0}`
-- Apply assignment rule: `{ (x > 0)[x/(x+1)] } x = x + 1 {x > 0}` → `{x+1 > 0} x = x + 1 {x > 0}`
-- Check: Does `x = 0` imply `x+1 > 0`? Yes (since `0+1 = 1 > 0`).
-- Therefore, the triple is valid.
+### 3. Core Rules (1.5 min)
+**Assignment** (read backwards): $\{ψ[e/x]\}$ x := e $\{ψ\}$
+- Ex: $\{?\}$ `x:=x+1` $\{x>5\}$ → substitute → $\{x>4\}$
 
-## 3. Key Rules of Hoare Calculus
-### Assignment Rule
-`{Q[x/e]} x = e {Q}`
+**Sequence**: $\dfrac{\{φ\}C_1\{φ'\} \quad \{φ'\}C_2\{ψ\}}{\{φ\}C_1; C_2\{ψ\}}$
 
-### Precondition Strengthening
-If `P' ⇒ P` and `{P} S {Q}`, then `{P'} S {Q}`.
-- We can replace the precondition with a *stronger* one (i.e., one that implies the original).
+**While**: $\dfrac{\{θ ∧ b\}C_0\{θ\}}{\{θ\} \text{ while } b \text{ do } C_0 \{θ ∧ ¬b\}}$ — requires **loop invariant** $θ$
 
-### Postcondition Weakening
-If `{P} S {Q}` and `Q ⇒ Q'`, then `{P} S {Q'}`.
-- We can replace the postcondition with a *weaker* one (i.e., one that is implied by the original).
+### 4. Loop Invariants (1 min)
+Property that holds before and after every iteration: $\{θ ∧ b\} C_0 \{θ\}$
 
-### Sequencing
-If `{P} S1 {R}` and `{R} S2 {Q}`, then `{P} S1; S2 {Q}`.
+**Ex**: `while (i<n) {i+=1}` — Invariant $i≤n$? Check: $\{i<n ∧ i≤n\}$ `i+=1` $\{i≤n\}$ ✓
 
-### Conditionals
-If `{P ∧ b} S1 {Q}` and `{P ∧ ¬b} S2 {Q}`, then `{P} if b then S1 else S2 {Q}`.
+Finding good invariants is the hard part — must be strong enough for postcondition!
 
-### While Loops
-If `{P ∧ b} S {P}`, then `{P} while b do S {P ∧ ¬b}` (where `P` is the loop invariant).
-
-## 4. Formal Proof Example (From Video Script)
-**Goal**: Prove `{x ≥ 0} x = x + 1 {x > 0}`.
-
-### Proof Method 1 (Using Assignment Backwards)
-1. **Assignment Rule**:
-   - Start with postcondition `x > 0` and assignment `x = x+1`.
-   - Rule gives: `{x+1 > 0} x = x + 1 {x > 0}`.
-2. **Logic Step**:
-   - Show `x ≥ 0 ⇒ x+1 > 0`: If `x ≥ 0`, then `x+1 ≥ 1 > 0`.
-3. **Precondition Strengthening**:
-   - Since `x ≥ 0 ⇒ x+1 > 0`, we can strengthen the precondition from `x+1 > 0` to `x ≥ 0`.
-   - Result: `{x ≥ 0} x = x + 1 {x > 0}`.
-
-### Proof Method 2 (Using Precondition Strengthening & Postcondition Weakening)
-1. **Assignment Rule** (with a different postcondition):
-   - Choose postcondition `x ≥ 1`. Then `{ (x ≥ 1)[x/(x+1)] } x = x + 1 {x ≥ 1}` → `{x+1 ≥ 1} x = x + 1 {x ≥ 1}`.
-2. **Precondition Strengthening**:
-   - `x ≥ 0 ⇒ x+1 ≥ 1` (since adding 1 to both sides preserves inequality).
-   - So, `{x ≥ 0} x = x + 1 {x ≥ 1}`.
-3. **Postcondition Weakening**:
-   - `x ≥ 1 ⇒ x > 0` (any number ≥1 is >0).
-   - Thus, `{x ≥ 0} x = x + 1 {x > 0}`.
-
-## 5. Important Concepts
-- **Precondition Strengthening**: Valid because starting in a state that satisfies a stronger condition guarantees the original precondition.
-- **Postcondition Weakening**: Valid because if we end in a state satisfying the original postcondition, any weaker condition is also satisfied.
-- **Do NOT mix up**:
-  - *Weakening the precondition* is invalid (starting with a weaker condition may not satisfy the original precondition).
-  - *Strengthening the postcondition* is invalid (ending state may not satisfy the stronger condition).
-
-## 6. Connection to Weakest Precondition (Next Chapter)
-- The **weakest precondition** `wp(S, Q)` is the weakest condition `P` such that `{P} S {Q}` holds.
-- It is computed systematically using Hoare rules:
-  - Assignment: `wp(x = e, Q) = Q[x/e]`
-  - Sequencing: `wp(S1; S2, Q) = wp(S1, wp(S2, Q))`
-  - Conditionals: `wp(if b then S1 else S2, Q) = (b ⇒ wp(S1, Q)) ∧ (¬b ⇒ wp(S2, Q))`
-- Weakest precondition calculus builds on Hoare logic, using precondition strengthening and postcondition weakening to derive the minimal required precondition.
+### 5. Properties (15 sec)
+- **Sound**: derivable → valid ✓
+- **Not complete**: some valid triples not derivable (undecidable)
+- **Relatively complete** (Cook '74): complete if invariants expressible & side conditions provable
 
 ---
+### All Rules (System H)
+| Rule | Form |
+|------|------|
+| **Skip** | $\{φ\}$ skip $\{φ\}$ |
+| **Assign** | $\{ψ[e/x]\}$ x := e $\{ψ\}$ |
+| **Seq** | $\dfrac{\{φ\}C_1\{φ'\} \quad \{φ'\}C_2\{ψ\}}{\{φ\}C_1; C_2\{ψ\}}$ |
+| **Cond** | $\dfrac{\{φ ∧ b\}C_1\{ψ\} \quad \{φ ∧ ¬b\}C_2\{ψ\}}{\{φ\} \text{ if } b \text{ then } C_1 \text{ else } C_2 \{ψ\}}$ |
+| **While** | $\dfrac{\{θ ∧ b\}C_0\{θ\}}{\{θ\} \text{ while } b \text{ do } C_0 \{θ ∧ ¬b\}}$ |
+| **Conseq** | $\dfrac{\{φ\}C\{ψ\}}{\{φ'\}C\{ψ'\}}$ if $φ' → φ$ and $ψ → ψ'$ |
 
-**Note for Exam**: You may be asked to prove a Hoare triple using these rules. Practice with simple assignments and conditionals. Remember to always reason backwards from the postcondition and use the rules step-by-step.
+### Factorial Example
+```
+{n ≥ 0}  f := 1; i := 1;
+while i ≤ n do ⟨f = fact(i-1) ∧ 1 ≤ i ≤ n+1⟩
+  { f := f·i; i := i+1 }
+{f = fact(n)}
+```
+
+### Key Definitions
+- **Valid**: $∀s,s'$: if $⟦φ⟧(s)=T$ and $(C,s) \leadsto s'$ then $⟦ψ⟧(s')=T$
+- **Auxiliary vars**: in $φ$/$ψ$ but not in $C$ (e.g., $x_0$ for initial value)
+- **Loop unfolding**: while $b$ do $C$ $≡$ if $b$ then $(C;$ while $b$ do $C)$ else skip
+
+### Proof Strategy
+1. Work bottom-up from conclusion
+2. Assignments: substitute backwards into postcondition
+3. While: identify invariant $θ$, show $\{θ∧b\}C_0\{θ\}$, conclude $\{θ\}$while$\{θ∧¬b\}$
+4. Use consequence rule to bridge logical gaps
+5. Verify side conditions ($φ'→φ$, $ψ→ψ'$)
+
+### Common Invariant Patterns
+- Counter bounds: $0 ≤ i ≤ n$
+- Accumulator: $result = f(i)$ where $f$ is partial computation
+- Relationship: $x·y = x_0·y_0$ (for multiplication by addition)
