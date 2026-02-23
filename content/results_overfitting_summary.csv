@@ -1,0 +1,5 @@
+Condition,Description,Best Test Acc (Mean),Best Test Acc (Std),Best Epoch (Mean),Best Epoch (Std),Final Test Acc (Mean),Final Test Acc (Std)
+1,"Simple, 50 epochs",0.8639,0.0004,40.2,8.8,0.8600,0.0035
+2,"Simple, 100 epochs",0.8639,0.0004,40.2,8.8,0.8543,0.0029
+3,"Deep/Wide, 30 epochs",0.8622,0.0007,11.4,4.4,0.8506,0.0038
+4,"Deep/Wide, 50 epochs",0.8622,0.0007,11.4,4.4,0.8412,0.0029

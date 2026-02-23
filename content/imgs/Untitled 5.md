@@ -1,0 +1,4 @@
+- **Strong start** – aligned on direction quickly; high early motivation
+- **Deadlines respected** – agreed tasks usually delivered on time
+- **Late-project status meetings** – short daily check-ins improved sync
+- **No major conflicts** – disagreements stayed manageable
