@@ -12,3 +12,12 @@ onlytwo (_) = False
 -- False
 -- True
 -- False
+
+-- ===== Prep 2 =====
+alldots xs ys = [a*c + b*d | (a, b) <- xs, (c, d) <- ys]
+
+
+-- >>> alldots [(1,2),(3,4)] [(5,6),(7,8)]
+-- >>> alldots [(1,2)] []
+-- [17,23,39,53]
+-- []
