@@ -25,13 +25,34 @@ replicatee n [e] = replicatee (n-1) [e] ++ [e]
 replicateee n e = take n (repeat e)
 
 -- >>> replicateee 4 1
--- >>> replicatee 4 1
--- No instance for `Num [()]' arising from a use of `it_aHYh'
--- In the first argument of `evalPrint', namely `it_aHYh'
--- In a stmt of an interactive GHCi command: evalPrint it_aHYh
+-- [1,1,1,1]
 
--- >>> replicatee 3 5
+-- OBS - why replicatee breaks:
+--   The pattern [e] means "a list with exactly ONE element, call it e". So the second
+--   argument must be a list, and replicatee 3 5 asks GHC to treat 5 as a list
+--   (Num [a]), which is the 'No instance for Num [()]' error. Also the result is
+--   built from [e] ++ [e] ++ ..., so you would get [[e],[e]]-ish nonsense if it
+--   typechecked.
+--   Fix: take the element x directly, no brackets.
+
+replicate' :: Int -> a -> [a]
+replicate' 0 _ = []
+replicate' n x = x : replicate' (n - 1) x
+
+-- >>> replicate' 3 5
+-- >>> replicate' 2 "hej"
+-- >>> replicate' 0 'x'
 -- [5,5,5]
+-- ["hej","hej"]
+-- ""
+
+-- Forklaring:
+--   Type: a count (Int) and ONE element of any type a, giving a list of a's.
+--   Parametric in a.
+--   Base: 0 copies is []. Recursive: one x in front of n-1 copies.
+--   x : ... (cons) is better than ... ++ [x]: it is O(1) instead of walking the list.
+--   Note: replicate' (-1) 'x' never hits 0 and loops forever. Using  n <= 0  as the
+--   base case (with a guard) makes it total.
 
 
 
@@ -52,4 +73,16 @@ improve (x:xs) = [x] ++ improve (drop 1 xs)
 
 -- >>> improve [1,2,3,4,5,6,7]
 -- [1,3,5,7]
+
+-- Cleaner with patterns only (no drop): match the first TWO elements and skip
+-- the second one.
+improve' :: [a] -> [a]
+improve' (x:_:xs) = x : improve' xs
+improve' xs       = xs              -- [] or [x]: nothing to remove
+
+-- >>> improve' [1,2,3,4,5,6,7]
+-- [1,3,5,7]
+
+-- Forklaring: type improve :: [a] -> [a] (parametric). The pattern (x:_:xs) only
+-- matches lists with at least two elements, so the last line catches [] and [x].
 

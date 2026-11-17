@@ -42,6 +42,14 @@ onlytwo (_) = False
 -- False
 
 -- >>> :t onlytwo
+-- onlytwo :: [a] -> Bool
+
+-- Forklaring:
+--   (x:y:[]) (also written [x,y]) only matches a list with EXACTLY two elements.
+--   Everything else falls through to the catch-all _ and gives False.
+--   The order of the equations matters: Haskell tries them top to bottom.
+--   We never look at x or y, so there is no constraint: parametric polymorphism.
+--   (Style: since x and y are not used you can write  onlytwo [_,_] = True.)
 
 -- ===== Prep 2 =====
 -- Prikproduktet af to talpar (a, b) og (c, d) er tallet a*c + b*d. Definer, ved
@@ -59,6 +67,15 @@ alldots xs ys = [a*c + b*d | (a, b) <- xs, (c, d) <- ys]
 -- []
 
 -- >>> :t alldots
+-- alldots :: Num a => [(a, a)] -> [(a, a)] -> [a]
+
+-- Forklaring:
+--   Two generators = every pair from xs combined with every pair from ys
+--   (length xs * length ys results). The patterns (a, b) and (c, d) take the pairs
+--   apart directly inside the generator.
+--   Test 1: (1,2)·(5,6) = 5+12 = 17, (1,2)·(7,8) = 7+16 = 23,
+--           (3,4)·(5,6) = 15+24 = 39, (3,4)·(7,8) = 21+32 = 53.
+--   Test 2: an empty list on either side gives no combinations, so [].
 
 ```
 
@@ -106,6 +123,15 @@ idhead' ((x,y):_) = x == y
 -- False
 -- True
 
+-- Forklaring:
+--   Yes, polymorphic: idhead :: Eq a => [(a, a)] -> Bool. It works for any a that
+--   supports ==, so it is AD HOC polymorphism (overloading via the Eq class).
+--   Both components must be the same type a, because we compare them with x == y.
+--   idhead' is the nicer version: x == y already IS a Bool, so the guards
+--   "| x == y = True | otherwise = False" just repeat it.
+--   Note: neither handles the empty list. idhead [] crashes with "Non-exhaustive
+--   patterns". Add  idhead [] = False  to make it total.
+
 
 
 -- ===== Task 2 ===== (15 min)
@@ -117,13 +143,28 @@ idhead' ((x,y):_) = x == y
 -- k, giver os en liste af alle pythagoræiske tripler, hvis største element er højst k.
 -- Før du skriver definitionen af pyt, skal du finde ud af, hvad dens type bør være.
 --
--- pyt :: a -> (a)
+-- pyt :: (Num c, Ord c, Enum c) => c -> [(c, c, c)]
+--   (written by hand you would usually just say  pyt :: Int -> [(Int, Int, Int)])
 pyt k = [ (a,b,c) | a <- [3..k], b <- [4..k], c <- [5..k], a <= b, b < c, a^2 + b^2 == c^2]
 
 -- >>> :t pyt
 -- >>> pyt 30
 -- pyt :: (Num c, Ord c, Enum c) => c -> [(c, c, c)]
 -- [(3,4,5),(5,12,13),(6,8,10),(7,24,25),(8,15,17),(9,12,15),(10,24,26),(12,16,20),(15,20,25),(18,24,30),(20,21,29)]
+
+-- Forklaring (type):
+--   Input: a number k. Output: a LIST of TRIPLES of the same kind of number.
+--   Constraints come from what we do with the numbers: [3..k] needs Enum, <= and <
+--   need Ord, ^ and + need Num.
+--
+-- Faster version: let the generators do the work of a <= b < c instead of
+-- filtering afterwards (b starts at a, c starts at b+1). Same result, far fewer
+-- candidates.
+pyt' :: Int -> [(Int, Int, Int)]
+pyt' k = [ (a,b,c) | c <- [1..k], b <- [1..c-1], a <- [1..b], a^2 + b^2 == c^2 ]
+
+-- >>> pyt' 20
+-- [(3,4,5),(6,8,10),(5,12,13),(9,12,15),(8,15,17),(12,16,20)]
 
 
 -- ===== Task 3 ===== (10 min)
@@ -141,6 +182,12 @@ bighead (x:xs) = length [ a | a <- xs, a > x ]
 
 -- >>> :t bighead
 -- >>> bighead [7,4,5,8,9]
+-- bighead :: Ord a => [a] -> Int
+-- 2
+
+-- Forklaring:
+--   We compare elements with > so we need Ord a. length always returns Int.
+--   The pattern (x:xs) gives us the first element x directly, without head.
 
 -- ===== Task 4 ===== (10 min)
 -- Vis, hvordan følgende funktionsdefinition kan udtrykkes ved hjælp af
@@ -158,6 +205,21 @@ plonk' = \x y z -> x + y + z
 -- plonk' :: Integer -> Integer -> Integer -> Integer
 -- 6
 -- 6
+
+-- Other correct lambda versions (they all mean the same thing):
+plonk2 = \x -> \y -> \z -> x + y + z       -- one argument at a time (true currying)
+plonk3 x = \y z -> x + y + z               -- mix: some args left, some in a lambda
+
+-- Forklaring:
+--   Type by hand: + :: Num a => a -> a -> a, so x, y, z and the result share one
+--   Num type: plonk :: Num a => a -> a -> a -> a.
+--
+--   Why is plonk' :: Integer -> ... and not Num a => ...? That is the
+--   MONOMORPHISM RESTRICTION: a definition with NO arguments on the left of =
+--   (plonk' = \x y z -> ...) and NO type signature is not allowed to be overloaded.
+--   GHC has to pick one concrete type and "defaults" Num to Integer. Fix: give it a
+--   signature  plonk' :: Num a => a -> a -> a -> a  (or put the args on the left).
+--   plonk itself has its arguments on the left, so it stays polymorphic.
 
 
 
@@ -226,6 +288,19 @@ dupli (x:xs) = x : x : dupli xs
 -- >>> dupli [1,2,3]
 -- [1,1,2,2,3,3]
 
+-- Version with concat (as the hint suggests): make a small list [x,x] for each
+-- element, which gives a list of lists, then glue them together.
+dupli' :: [a] -> [a]
+dupli' xs = concat [ [x,x] | x <- xs ]
+
+-- >>> [ [x,x] | x <- [1,2,3] ]
+-- >>> dupli' [1,2,3]
+-- [[1,1],[2,2],[3,3]]
+-- [1,1,2,2,3,3]
+
+-- Forklaring (type): we never look inside the elements, so no constraint is needed:
+--   dupli :: [a] -> [a]   (parametric polymorphism)
+
 
 -- === D) ===
 -- Her er en funktion sums, hvis definition har én enkelt anvendelse af
@@ -240,6 +315,18 @@ dupli (x:xs) = x : x : dupli xs
 sums m n = [ x+y | x <- [1..m], y <- [1..n] ]
 
 sums' m n = concat [ [y+1 | y <- [x..x+n-1]] | x <- [1..m]]
+
+-- A more direct version: the inner comprehension uses the outer x directly.
+-- (The inner list is one comprehension with one generator, and x is just a variable.)
+sums'' m n = concat [ [ x+y | y <- [1..n] ] | x <- [1..m] ]
+
+-- >>> sums'' 4 9 == sums 4 9
+-- True
+
+-- Forklaring:
+--   With two generators, the LAST generator (y) runs fastest. For each x, y runs
+--   through all of [1..n]. That is exactly "for each x, make the list [x+1..x+n],
+--   then concat them", which is what sums' and sums'' do.
 
 
 -- >>> sums 4 9

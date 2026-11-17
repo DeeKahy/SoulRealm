@@ -1,0 +1,12 @@
+-- isolate ::    Eq a =>  [a] -> a -> ([a],[a])
+
+isolate [] _ = ([],[])
+isolate (x:xs) y = if x == y then (notys,x:ys) else (x:notys,ys)
+                            where (notys,ys) = isolate xs y
+--rekursivt kald i where og et mønster, der fortæller hvordan resultatet ser ud
+
+isolate' [] _ = ([],[])
+isolate' (x:xs) y | x == y = (notys,x:ys)
+                        | otherwise = (x:notys,ys)
+                                             where (notys,ys) = isolate' xs y
+-- brug guards til at håndtere hvert tilfælde for sig

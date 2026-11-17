@@ -26,3 +26,5 @@
 -- ===== Noter til kapitel 9 (Countdown) =====
 --
 --   *
+-- >>> head "1234"
+ixme xs = xs

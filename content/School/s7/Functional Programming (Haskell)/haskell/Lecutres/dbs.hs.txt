@@ -1,0 +1,4 @@
+dbs xs | length xs == 0 = []
+       | otherwise = filter ((2 * fst (head xs)) == (snd (head xs))) xs
+
+       

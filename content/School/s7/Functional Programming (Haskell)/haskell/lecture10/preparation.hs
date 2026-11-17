@@ -27,9 +27,9 @@ data Onion a = Core a | Layer (Onion a) deriving Show
 -- Husk:  class Functor f where
 --          fmap :: (a -> b) -> f a -> f b
 
--- instance Functor Onion where
---   fmap =
-
+instance Functor Onion where
+  fmap f (Core x)  = Core (f x)
+  fmap f (Layer o) = Layer (fmap f o)
 
 -- Løget fra Figur 0.1 (seks lag, kerne "bingo"):
 bingoOnion :: Onion String
@@ -72,3 +72,55 @@ bingoOnion = Layer (Layer (Layer (Layer (Layer (Layer (Core "bingo"))))))
 -- >>> pure id <*> Just 5
 -- >>> (pure ((+1) 5) :: Maybe Int)
 -- >>> pure (+1) <*> pure 5 :: Maybe Int
+
+-- ----- Kørbar version: hvert trin i omskrivningen som rigtig kode -----
+-- Hver liste indeholder trinene fra beviset. Er beviset rigtigt, giver alle
+-- trin samme værdi.
+
+-- Lov (1), x = Nothing
+law1Nothing :: [Maybe Int]
+law1Nothing =
+  [ pure id <*> Nothing   -- start
+  , Just id <*> Nothing   -- pure = Just
+  , fmap id Nothing       -- (Just g) <*> mx = fmap g mx
+  , Nothing               -- fmap g Nothing = Nothing
+  ]
+
+-- Lov (1), x = Just v  (her med v = 5)
+law1Just :: [Maybe Int]
+law1Just =
+  [ pure id <*> Just 5    -- start
+  , Just id <*> Just 5    -- pure = Just
+  , fmap id (Just 5)      -- (Just g) <*> mx = fmap g mx
+  , Just (id 5)           -- fmap g (Just x) = Just (g x)
+  , Just 5                -- id v = v
+  ]
+
+-- Lov (2)  (her med g = (+1) og x = 5)
+law2 :: [Maybe Int]
+law2 =
+  [ pure (+1) <*> pure 5  -- start
+  , Just (+1) <*> Just 5  -- pure = Just (to gange)
+  , fmap (+1) (Just 5)    -- (Just g) <*> mx = fmap g mx
+  , Just ((+1) 5)         -- fmap g (Just x) = Just (g x)
+  , pure ((+1) 5)         -- pure = Just (baglæns)
+  ]
+
+-- Er alle trin ens?
+allSame :: Eq a => [a] -> Bool
+allSame []       = True
+allSame (x : xs) = all (== x) xs
+
+-- Lovene som funktioner, så de kan testes på mange værdier
+law1Holds :: Maybe Int -> Bool
+law1Holds x = (pure id <*> x) == x
+
+law2Holds :: (Int -> Int) -> Int -> Bool
+law2Holds g x = (pure (g x) :: Maybe Int) == (pure g <*> pure x)
+
+-- >>> law1Nothing
+-- >>> law1Just
+-- >>> law2
+-- >>> map allSame [law1Nothing, law1Just, law2]
+-- >>> map law1Holds [Nothing, Just 0, Just 5, Just (-3)]
+-- >>> and [law2Holds g x | g <- [(+1), (*2), negate], x <- [-2 .. 2]]

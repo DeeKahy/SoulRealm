@@ -83,10 +83,35 @@ qsort (x:xs) = big ++ [x] ++ small
                        big   = qsort [a | a <- xs, a > x]
 
 -- >>> qsort [6,2,2,3,1,5,6]
--- [6,5,4,3,2,2,1]
+-- >>> qsort ["kpst","ding","bop","plip"]
+-- [6,6,5,3,2,2,1]
+-- ["plip","kpst","ding","bop"]
+
+-- Forklaring:
+--   Swapping `small` and `big` in the result (big ++ [x] ++ small) is all it takes
+--   to sort in descending order.
+--   qsort on strings makes sense: the type is Ord a => [a] -> [a], and String = [Char]
+--   is an instance of Ord. Strings are compared lexicographically (dictionary order,
+--   char by char), so you get reverse alphabetical order.
 
 
 -- ===== C =====
 -- Opgave c: Forestil jer, at vi ændrede qsort fra simple.hs, så vi udskiftede <= med <. Hvad ville der så ske?
 
--- TODO: svar/test her
+-- Forklaring:
+--   The original (from simple.hs) is
+--     small = qsort [a | a <- xs, a <= x]
+--     big   = qsort [a | a <- xs, a >  x]
+--   Every element of xs lands in exactly ONE of the two lists. If we change <= to <,
+--   any element EQUAL to the pivot x lands in neither list (it is not < x and not > x),
+--   so duplicates of the pivot disappear. The result is still sorted, but duplicates
+--   are lost. (Ascending version used below.)
+
+qsortLt :: (Ord a) => [a] -> [a]
+qsortLt [] = []
+qsortLt (x:xs) = small ++ [x] ++ big
+                   where small = qsortLt [a | a <- xs, a < x]
+                         big   = qsortLt [a | a <- xs, a > x]
+
+-- >>> qsortLt [3,1,3,2,1]
+-- [1,2,3]

@@ -27,6 +27,14 @@ onlytwo (_) = False
 -- False
 
 -- >>> :t onlytwo
+-- onlytwo :: [a] -> Bool
+
+-- Forklaring:
+--   (x:y:[]) (also written [x,y]) only matches a list with EXACTLY two elements.
+--   Everything else falls through to the catch-all _ and gives False.
+--   The order of the equations matters: Haskell tries them top to bottom.
+--   We never look at x or y, so there is no constraint: parametric polymorphism.
+--   (Style: since x and y are not used you can write  onlytwo [_,_] = True.)
 
 -- ===== Prep 2 =====
 -- Prikproduktet af to talpar (a, b) og (c, d) er tallet a*c + b*d. Definer, ved
@@ -44,3 +52,12 @@ alldots xs ys = [a*c + b*d | (a, b) <- xs, (c, d) <- ys]
 -- []
 
 -- >>> :t alldots
+-- alldots :: Num a => [(a, a)] -> [(a, a)] -> [a]
+
+-- Forklaring:
+--   Two generators = every pair from xs combined with every pair from ys
+--   (length xs * length ys results). The patterns (a, b) and (c, d) take the pairs
+--   apart directly inside the generator.
+--   Test 1: (1,2)·(5,6) = 5+12 = 17, (1,2)·(7,8) = 7+16 = 23,
+--           (3,4)·(5,6) = 15+24 = 39, (3,4)·(7,8) = 21+32 = 53.
+--   Test 2: an empty list on either side gives no combinations, so [].
